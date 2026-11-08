@@ -21,7 +21,7 @@ class AppError extends Error {
   }
 }
 
-export default AppError;
+export { AppError };
 
 // export interface AppError extends Error {
 //   status: string;

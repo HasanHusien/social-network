@@ -1,5 +1,5 @@
 import { HTTP_STATUS } from "../constants/httpStatus.js";
-import AppError from "../utils/appError.js";
+import {AppError} from "../utils/index.js";
 import type { NextFunction, Request, Response } from "express";
 
 const handleCastErrorDB = (err: AppError): AppError => {
@@ -88,4 +88,4 @@ function errorHandler(
   }
 }
 
-export default errorHandler;
+export { errorHandler };

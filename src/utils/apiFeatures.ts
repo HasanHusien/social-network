@@ -1,6 +1,6 @@
 import { Query } from "mongoose";
 
-export interface ApiQueryString {
+interface ApiQueryString {
   page?: string;
   limit?: string;
   sort?: string;
@@ -10,7 +10,7 @@ export interface ApiQueryString {
 
 const EXCLUDED_FIELDS = ["page", "limit", "sort", "fields"] as const;
 
-export const apiFeatures = <T>(
+const apiFeatures = <T>(
   query: Query<T[], T>,
   queryString: ApiQueryString,
 ): Query<T[], T> => {
@@ -44,6 +44,7 @@ export const apiFeatures = <T>(
   return query;
 };
 
+export { apiFeatures, type ApiQueryString };
 /*
 
 GET http://localhost:3000/api/posts

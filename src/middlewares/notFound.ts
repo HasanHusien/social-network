@@ -1,6 +1,6 @@
 import type { NextFunction, Response, Request } from "express";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
-import AppError from "../utils/appError.js";
+import { AppError } from "../utils/index.js";
 
 const notFound = (req: Request, res: Response, next: NextFunction) => {
   next(
@@ -11,4 +11,4 @@ const notFound = (req: Request, res: Response, next: NextFunction) => {
   );
 };
 
-export default notFound;
+export { notFound };

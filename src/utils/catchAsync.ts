@@ -6,8 +6,9 @@ type AsyncHandler = (
   next: NextFunction,
 ) => Promise<unknown>;
 
-export function catchAsync(fn: AsyncHandler) {
+function catchAsync(fn: AsyncHandler) {
   return (req: Request, res: Response, next: NextFunction) => {
     fn(req, res, next).catch(next);
   };
 }
+export { catchAsync };

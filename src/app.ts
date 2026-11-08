@@ -1,9 +1,8 @@
 import express from "express";
 import userRouter from "./routes/user.routes.js";
 import morgan from "morgan";
-import errorHandler from "./middlewares/errorHandler.js";
 import cookieParser from "cookie-parser";
-import notFound from "./middlewares/notFound.js";
+import { notFound, errorHandler } from "./middlewares/index.js";
 
 const app = express();
 app.use(express.json());
