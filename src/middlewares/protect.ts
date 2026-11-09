@@ -2,7 +2,7 @@ import type { Request, RequestHandler } from "express";
 import { catchAsync, AppError } from "../utils/index.js";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
-import { User } from "../model/index.js";
+import { User } from "../modules/index.js";
 
 interface TokenPayload extends JwtPayload {
   id: string;

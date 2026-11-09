@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 
-import type { IUser, IUserMethods, UserModel } from "../types/userTypes.js";
+import type { IUser, IUserMethods, UserModel } from "../../types/userTypes.js";
 import { model, Schema, Query } from "mongoose";
 import validator from "validator";
 

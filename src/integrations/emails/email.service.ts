@@ -1,7 +1,7 @@
 // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 
-import { env } from "../config/env.js";
+import { env } from "../../config/env.js";
 import { convert } from "html-to-text";
 import { createElement } from "react";
 import { render } from "@react-email/components";
