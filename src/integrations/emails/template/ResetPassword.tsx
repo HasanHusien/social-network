@@ -42,5 +42,4 @@ function ResetPassword({ firstName, url }: ResetPasswordProps) {
     </Layout>
   );
 }
-
-module.exports = ResetPassword;
+export default ResetPassword;
