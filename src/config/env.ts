@@ -17,4 +17,6 @@ export const env = {
   jwtSecret: required("JWT_SECRET"),
   jwtExpiresIn: required("JWT_EXPIRES_IN") as ExpiresIn,
   cookieExpiresIn: required("JWT_COOKIE_EXPIRES_IN"),
+  sendgridKey: required("SENDGRID_API_KEY"),
+  sendgridEmail:required("SENDGRID_EMAIL")
 };
