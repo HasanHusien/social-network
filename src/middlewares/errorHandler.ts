@@ -43,7 +43,7 @@ const sendErrorDevelopment = (err: AppError, res: Response): void => {
   res.status(err.statusCode).json({
     status: err.status,
     message: err.message,
-    // stack: err.stack,
+    stack: err.stack,
   });
 };
 

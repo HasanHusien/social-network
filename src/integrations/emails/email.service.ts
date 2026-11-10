@@ -18,14 +18,12 @@ class SendEmail {
   user: string;
   url: string;
   to: string;
-  from: string;
   firstName: string;
 
   constructor(user: any, url: string) {
     this.user = user;
     this.url = url;
     this.to = user.email;
-    this.from = `Unknown ${env.sendgridEmail}`;
     this.firstName = user.name.split(" ")[0] || "there";
   }
 
@@ -33,9 +31,11 @@ class SendEmail {
     const html = await render(
       createElement(template, { firstName: this.firstName, url: this.url }),
     );
-
     const msg = {
-      from: this.from,
+      from: {
+        email: env.sendgridEmail,
+        name: "Unknown",
+      },
       to: this.to,
       subject,
       html,
