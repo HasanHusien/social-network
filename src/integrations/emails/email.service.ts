@@ -3,7 +3,7 @@
 
 import { env } from "../../config/env.js";
 import { convert } from "html-to-text";
-import { createElement } from "react";
+import { createElement, type ReactNode } from "react";
 import { render } from "@react-email/components";
 
 import Welcome from "./template/Welcome.js";
@@ -14,53 +14,47 @@ sgMail.setApiKey(env.sendgridKey);
 // sgMail.setDataResidency('eu');
 // uncomment the above line if you are sending mail using a regional EU subuser
 
-// CONVERT TO ONE CLASS Welcome && Reset
-async function sendWelcomeEmail(user: any, url: string) {
-  try {
-    const companyName = "Unknown";
-    const firstName = user.name ? user.name.split(" ")[0] : "there";
-    const element = await render(createElement(Welcome, { firstName, url }));
+class SendEmail {
+  user: string;
+  url: string;
+  to: string;
+  from: string;
+  firstName: string;
 
-    const msg = {
-      to: String(user.email),
-      from: {
-        email: String(env.sendgridEmail),
-        name: companyName,
-      },
-      subject: `Welcome to ${companyName}. ${firstName}`,
-      text: convert(element),
-      html: element,
-    };
-
-    await sgMail.send(msg);
-  } catch (err) {
-    console.log(err);
+  constructor(user: any, url: string) {
+    this.user = user;
+    this.url = url;
+    this.to = user.email;
+    this.from = `Unknown ${env.sendgridEmail}`;
+    this.firstName = user.name.split(" ")[0] || "there";
   }
-}
 
-async function sendResetPasswordEmail(user: any, url: string) {
-  try {
-    const companyName = "Unknown";
-    const firstName = user.name ? user.name.split(" ")[0] : "there";
-    const element = await render(
-      createElement(ResetPassword, { firstName, url }),
+  async send(template: any, subject: string) {
+    const html = await render(
+      createElement(template, { firstName: this.firstName, url: this.url }),
     );
 
     const msg = {
-      to: String(user.email),
-      from: {
-        email: String(env.sendgridEmail),
-        name: companyName,
-      },
-      subject: "Your password reset token (valid for only 10 minutes)",
-      text: convert(element),
-      html: element,
+      from: this.from,
+      to: this.to,
+      subject,
+      html,
+      text: convert(html),
     };
 
     await sgMail.send(msg);
-  } catch (err) {
-    console.log(err);
+  }
+
+  async sendWelcome() {
+    await this.send(Welcome, "Welcome to our family.");
+  }
+
+  async sendPasswordReset() {
+    await this.send(
+      ResetPassword,
+      "Your password reset token (valid for only 10 minutes)",
+    );
   }
 }
 
-export { sendWelcomeEmail, sendResetPasswordEmail };
+export { SendEmail };
