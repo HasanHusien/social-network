@@ -8,11 +8,7 @@ const signToken = (id: string): string => {
   });
 };
 
-const createSendToken = (
-  user: any,
-  statusCode: number,
-  res: Response,
-): void => {
+const sendToken = (user: any, statusCode: number, res: Response): void => {
   const convertToDays = 24 * 60 * 60 * 1000;
   const token = signToken(user._id);
 
@@ -33,4 +29,4 @@ const createSendToken = (
   });
 };
 
-export { createSendToken };
+export { sendToken };

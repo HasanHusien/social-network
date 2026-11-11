@@ -8,8 +8,8 @@ export interface IUser {
   password: string;
   passwordConfirm: string | undefined;
   passwordChangedAt: Date | number;
-  passwordResetToken: string;
-  passwordResetExpires: Date;
+  passwordResetToken: string | undefined;
+  passwordResetExpires: Date | undefined | number;
   active: boolean;
 }
 
@@ -19,6 +19,6 @@ export interface IUserMethods {
     userPassword: string,
   ): Promise<boolean>;
   changedPasswordAfter(JWTTimestamp: number): boolean;
+  createPasswordResetToken(): string;
 }
-
 export type UserModel = Model<IUser, {}, IUserMethods>;
