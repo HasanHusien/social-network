@@ -6,7 +6,7 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 const APIFeatures = require("./../utils/apiFeatures");
 
-exports.deleteOne = <T>(Model: Model<T>) =>
+const deleteOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
 
@@ -20,7 +20,7 @@ exports.deleteOne = <T>(Model: Model<T>) =>
     });
   });
 
-exports.updateOne = <T>(Model: Model<T>) =>
+const updateOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -39,7 +39,7 @@ exports.updateOne = <T>(Model: Model<T>) =>
     });
   });
 
-exports.createOne = <T>(Model: Model<T>) =>
+const createOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.create(req.body);
 
@@ -51,7 +51,7 @@ exports.createOne = <T>(Model: Model<T>) =>
     });
   });
 
-exports.getOne = (Model: any, popOptions: any) =>
+const getOne = (Model: any, popOptions?: any) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     let query = Model.findById(req.params.id);
     if (popOptions) query = query.populate(popOptions);
@@ -69,7 +69,7 @@ exports.getOne = (Model: any, popOptions: any) =>
     });
   });
 
-exports.getAll = <T>(Model: Model<T>) =>
+const getAll = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     // To allow for nested GET reviews on tour (hack)
     let filter = {};
@@ -92,3 +92,5 @@ exports.getAll = <T>(Model: Model<T>) =>
       },
     });
   });
+
+export { getAll, getOne, deleteOne, updateOne };

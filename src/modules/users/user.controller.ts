@@ -1,18 +1,15 @@
 import type { RequestHandler } from "express";
-import { HTTP_STATUS } from "../../constants/httpStatus.js";
-import { catchAsync } from "../../utils/index.js";
 import { User } from "../index.js";
+import {
+  deleteOne,
+  getAll,
+  getOne,
+  updateOne,
+} from "../../factories/handlerFactory.js";
 
-export const getAllUsers: RequestHandler = catchAsync(
-  async (_req, res, _next) => {
-    const users = await User.find();
+const getAllUsers: RequestHandler = getAll(User);
+const getUser: RequestHandler = getOne(User);
+const updateUser: RequestHandler = updateOne(User);
+const deleteUser: RequestHandler = deleteOne(User);
 
-    res.status(HTTP_STATUS.OK).json({
-      status: "success",
-      result: users.length,
-      data: {
-        users,
-      },
-    });
-  },
-);
+export { getAllUsers, getUser, updateUser, deleteUser };
