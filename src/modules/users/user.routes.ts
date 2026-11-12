@@ -14,7 +14,6 @@ router.use(protect);
 
 router.get("/", getAllUsers);
 router.route("/:id").get(getUser).patch(updateUser).delete(deleteUser);
-
 router.patch("/updatePassword", updatePassword);
 
 export default router;
