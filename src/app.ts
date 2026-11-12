@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import userRouter from "./modules/users/user.routes.js";
-import authRouter from "./modules/auth/auth.routes.js";
+import authRouter from "./modules/authentication/auth.routes.js";
 import { notFound, errorHandler } from "./middlewares/index.js";
 
 const app = express();
@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use("/api/auth", authRouter);
+app.use("/api/authentication", authRouter);
 app.use("/api/users", userRouter);
 
 app.use(notFound);

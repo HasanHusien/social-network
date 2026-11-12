@@ -82,6 +82,23 @@ const updateMe: RequestHandler = catchAsync(async (req, res, next) => {
   });
 });
 
+const deleteMe: RequestHandler = catchAsync(async (req, res, next) => {
+  await User.findByIdAndUpdate(req.user.id, { active: false });
+
+  res.status(HTTP_STATUS.NO_CONTENT).json({
+    status: "success",
+    data: null,
+  });
+});
+
+const createUser = (req: any, res: any) => {
+  res.status(HTTP_STATUS.SERVER_ERROR).json({
+    status: "error",
+    message:
+      "This route is not defined, Please use authentication/register instead",
+  });
+};
+
 export {
   getAllUsers,
   getUser,
@@ -91,4 +108,6 @@ export {
   resizeUserPhoto,
   getMe,
   updateMe,
+  deleteMe,
+  createUser,
 };
