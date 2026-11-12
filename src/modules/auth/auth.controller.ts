@@ -48,6 +48,31 @@ const logout: RequestHandler = (req, res, next) => {
   res.status(200).json({ status: "success" });
 };
 
+const updatePassword: RequestHandler = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select("+password");
+
+  if (!user) {
+    return next(
+      new AppError(
+        "Something went wrong please try again",
+        HTTP_STATUS.BAD_REQUEST,
+      ),
+    );
+  }
+
+  if (!(await user.correctPassword(req.body.password, user.password))) {
+    return next(
+      new AppError("Your current password wrong", HTTP_STATUS.UNAUTHORIZED),
+    );
+  }
+
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+
+  await user.save();
+  sendToken(user, HTTP_STATUS.OK, res);
+});
+
 const forgetPassword: RequestHandler = catchAsync(async (req, _res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
@@ -110,4 +135,11 @@ const resetPassword: RequestHandler = catchAsync(async (req, res, next) => {
   sendToken(user, HTTP_STATUS.OK, res);
 });
 
-export { register, login, logout, forgetPassword, resetPassword };
+export {
+  register,
+  login,
+  logout,
+  forgetPassword,
+  resetPassword,
+  updatePassword,
+};
