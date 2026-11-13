@@ -1,4 +1,5 @@
 export { AppError } from "./appError.js";
-export { apiFeatures } from "./apiFeatures.js";
+export { APIFeatures } from "./apiFeatures.js";
 export { catchAsync } from "./catchAsync.js";
-export { createSendToken } from "./sendToken.js";
+export { sendToken } from "./sendToken.js";
+export { filterObj } from "./filterObject.js";

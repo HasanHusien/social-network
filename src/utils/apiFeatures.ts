@@ -57,7 +57,7 @@ class APIFeatures<T> {
   }
 }
 
-export default APIFeatures;
+export { APIFeatures };
 /*
 
 GET http://localhost:3000/api/posts

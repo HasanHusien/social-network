@@ -2,9 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import type { Model } from "mongoose";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
 
-const catchAsync = require("./../utils/catchAsync");
-const AppError = require("./../utils/appError");
-const APIFeatures = require("./../utils/apiFeatures");
+import { catchAsync, AppError, APIFeatures } from "./../utils/index.js";
 
 const deleteOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {

@@ -1,3 +1,5 @@
+import multer from "multer";
+import sharp from "sharp";
 import type { RequestHandler } from "express";
 import { User } from "../index.js";
 import {
@@ -6,12 +8,8 @@ import {
   getOne,
   updateOne,
 } from "../../factories/handlerFactory.js";
-import { AppError } from "../../utils/appError.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
-import multer from "multer";
-import { catchAsync } from "../../utils/catchAsync.js";
-import sharp from "sharp";
-import { filterObj } from "../../utils/filterObject.js";
+import { catchAsync, filterObj, AppError } from "../../utils/index.js";
 
 const getAllUsers: RequestHandler = getAll(User);
 const getUser: RequestHandler = getOne(User);
