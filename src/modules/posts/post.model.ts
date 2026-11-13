@@ -41,7 +41,7 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    privacy: {
+    visibility: {
       type: String,
       enum: ["public", "private", "followers"],
       default: "public",
@@ -49,6 +49,14 @@ const postSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+// Indexes for better performance
+// postSchema.index({ author: 1, createdAt: -1 });
+// postSchema.index({ createdAt: -1 });
+// postSchema.index({ likesCount: -1 });
+// postSchema.index({ commentsCount: -1 });
+// postSchema.index({ visibility: 1 });
+
 const Post = mongoose.model("Post", postSchema);
 
 export { Post };

@@ -6,6 +6,7 @@ export interface IUser {
   photo: string;
   role: string;
   password: string;
+  privacy: any;
   passwordConfirm: string | undefined;
   passwordChangedAt: Date | number;
   passwordResetToken: string | undefined;

@@ -43,6 +43,20 @@ export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
       message: "Passwords should be the same.",
     },
   },
+  privacy: {
+    isPrivateAccount: { type: Boolean, default: false },
+
+    whoCanMessage: {
+      type: String,
+      enum: ["everybody", "followers", "nobody"],
+      default: "everybody",
+    },
+    whoCanMention: {
+      type: String,
+      enum: ["everybody", "followers", "nobody"],
+      default: "everybody",
+    },
+  },
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
