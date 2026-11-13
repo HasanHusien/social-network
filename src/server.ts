@@ -4,7 +4,7 @@ import { initLoaders } from "./loaders/index.js";
 
 const start = async () => {
   const server = app.listen(env.port, () => {
-    console.log(`🚀 Server running On 127.0.0.1:${env.port}/api`);
+    console.log(`🚀 Server running On 127.0.0.1:${env.port}/network`);
   });
   await initLoaders(server);
 };
