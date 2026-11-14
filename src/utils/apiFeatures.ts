@@ -1,11 +1,8 @@
-import { Query } from "mongoose";
-import type { ParsedQs } from "qs";
+class APIFeatures {
+  public query: any;
+  public queryString: any;
 
-class APIFeatures<T> {
-  public query: Query<T[], T>;
-  public queryString: ParsedQs;
-
-  constructor(query: Query<T[], T>, queryString: ParsedQs) {
+  constructor(query: any, queryString: any) {
     this.query = query;
     this.queryString = queryString;
   }

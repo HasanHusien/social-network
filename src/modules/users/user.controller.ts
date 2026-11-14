@@ -11,10 +11,10 @@ import {
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { catchAsync, filterObj, AppError } from "../../utils/index.js";
 
-const getAllUsers: RequestHandler = getAll(User);
-const getUser: RequestHandler = getOne(User);
-const updateUser: RequestHandler = updateOne(User);
-const deleteUser: RequestHandler = deleteOne(User);
+const getAllUsers = getAll(User);
+const getUser = getOne(User);
+const updateUser = updateOne(User);
+const deleteUser = deleteOne(User);
 
 const multerFilter = (req: any, file: any, cb: any) => {
   if (file.mimetype.startWith("image")) {

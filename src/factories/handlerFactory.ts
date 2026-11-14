@@ -1,5 +1,5 @@
 import type { NextFunction, Request, Response } from "express";
-import type { Model } from "mongoose";
+import type { HydratedDocument, Model } from "mongoose";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
 
 import { catchAsync, AppError, APIFeatures } from "./../utils/index.js";
@@ -39,9 +39,9 @@ const updateOne = <T>(Model: Model<T>) =>
 
 const createOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const doc = await Model.create(req.body);
+    const doc: HydratedDocument<T> = await Model.create(req.body);
 
-    res.status(201).json({
+    res.status(HTTP_STATUS.CREATED).json({
       status: "success",
       data: {
         data: doc,
@@ -49,7 +49,7 @@ const createOne = <T>(Model: Model<T>) =>
     });
   });
 
-const getOne = (Model: any, popOptions?: any) =>
+const getOne = (Model: any, popOptions?: string) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     let query = Model.findById(req.params.id);
     if (popOptions) query = query.populate(popOptions);
@@ -62,23 +62,23 @@ const getOne = (Model: any, popOptions?: any) =>
     res.status(200).json({
       status: "success",
       data: {
-        data: doc,
+        doc,
       },
     });
   });
 
-const getAll = <T>(Model: Model<T>) =>
-  catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+const getAll = (Model: Model<any>, popOptions?: string) =>
+  catchAsync(async (req: Request, res: Response, _next: NextFunction) => {
     // To allow for nested GET reviews on tour (hack)
-    let filter = {};
-    if (req.params.tourId) filter = { tour: req.params.tourId };
 
-    const features = new APIFeatures(Model.find(filter), req.query)
+    const features = new APIFeatures(Model.find(), req.query)
       .filter()
       .sort()
       .limitFields()
       .paginate();
     // const doc = await features.query.explain();
+
+    if (popOptions) features.query.populate(popOptions);
     const doc = await features.query;
 
     // SEND RESPONSE
@@ -86,9 +86,9 @@ const getAll = <T>(Model: Model<T>) =>
       status: "success",
       results: doc.length,
       data: {
-        data: doc,
+        doc,
       },
     });
   });
 
-export { getAll, getOne, deleteOne, updateOne };
+export { getAll, getOne, deleteOne, updateOne, createOne };

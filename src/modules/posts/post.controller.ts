@@ -3,9 +3,13 @@ import { catchAsync } from "../../utils/catchAsync.js";
 import { AppError } from "../../utils/appError.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { Post } from "./post.model.js";
+import { getAll, getOne } from "../../factories/handlerFactory.js";
+
+const getAllPosts = getAll(Post);
+const getPost = getOne(Post, "author");
 
 const createPost: RequestHandler = catchAsync(async (req, res, next) => {
-  const { content, media } = req.body;
+  const { content, media, location } = req.body;
 
   if (!content || !media) {
     return next(
@@ -20,12 +24,13 @@ const createPost: RequestHandler = catchAsync(async (req, res, next) => {
     author: req.user.id,
     content,
     media,
+    location,
   });
 
   res.status(HTTP_STATUS.CREATED).json({
     status: "success",
-    posts: post,
+    post,
   });
 });
 
-export { createPost };
+export { createPost, getPost, getAllPosts };

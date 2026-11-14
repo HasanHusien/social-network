@@ -41,7 +41,7 @@ const protect: RequestHandler = catchAsync(async (req, res, next) => {
   }
 
   // decoded.iat is token creating time && jwt.sign adds iat automatically
-  if (decoded.iat && user.changedPasswordAfter(decoded.iat)) {
+  if (decoded.iat && user.changePasswordAfter(decoded.iat)) {
     return next(
       new AppError(
         "Password was changed recently. Please log in again.",

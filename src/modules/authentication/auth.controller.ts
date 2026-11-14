@@ -13,7 +13,7 @@ const register: RequestHandler = catchAsync(async (req, res, _next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
-  const url = `${req.protocol}://${req.get("host")}/api/users/me`;
+  const url = `${req.protocol}://${req.get("host")}/network/users/me`;
 
   await new SendEmail(user, url).sendWelcome();
   sendToken(user, HTTP_STATUS.OK, res);
@@ -39,7 +39,7 @@ const login: RequestHandler = catchAsync(async (req, res, next) => {
   sendToken(user, HTTP_STATUS.OK, res);
 });
 
-const logout: RequestHandler = (req, res, next) => {
+const logout: RequestHandler = (_req, res, _next) => {
   res.cookie("jwt", "logout", {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,

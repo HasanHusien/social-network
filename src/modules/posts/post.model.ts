@@ -27,6 +27,10 @@ const postSchema = new mongoose.Schema(
         message: "Max media size is 10 items",
       },
     },
+    location: {
+      type: String,
+      trim: true,
+    },
     likes: [
       {
         type: mongoose.Schema.Types.ObjectId,
