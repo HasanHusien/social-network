@@ -4,7 +4,7 @@ import { HTTP_STATUS } from "../constants/httpStatus.js";
 
 import { catchAsync, AppError, APIFeatures } from "./../utils/index.js";
 
-const deleteOne = <T>(Model: Model<T>) =>
+const deleteOne = (Model: Model<any>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
 
@@ -18,7 +18,7 @@ const deleteOne = <T>(Model: Model<T>) =>
     });
   });
 
-const updateOne = <T>(Model: Model<T>) =>
+const updateOne = (Model: Model<any>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -32,7 +32,7 @@ const updateOne = <T>(Model: Model<T>) =>
     res.status(200).json({
       status: "success",
       data: {
-        data: doc,
+        doc,
       },
     });
   });

@@ -3,10 +3,17 @@ import { catchAsync } from "../../utils/catchAsync.js";
 import { AppError } from "../../utils/appError.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { Post } from "./post.model.js";
-import { getAll, getOne } from "../../factories/handlerFactory.js";
+import {
+  deleteOne,
+  getAll,
+  getOne,
+  updateOne,
+} from "../../factories/handlerFactory.js";
 
 const getAllPosts = getAll(Post);
 const getPost = getOne(Post, "author");
+const deletePost = deleteOne(Post);
+const updatePost = updateOne(Post);
 
 const createPost: RequestHandler = catchAsync(async (req, res, next) => {
   const { content, media, location } = req.body;
@@ -33,4 +40,4 @@ const createPost: RequestHandler = catchAsync(async (req, res, next) => {
   });
 });
 
-export { createPost, getPost, getAllPosts };
+export { createPost, getPost, getAllPosts, updatePost, deletePost };
