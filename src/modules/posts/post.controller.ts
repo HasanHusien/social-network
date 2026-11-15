@@ -15,7 +15,7 @@ const getPost = getOne(Post, "author");
 const deletePost = deleteOne(Post);
 const updatePost = updateOne(Post);
 
-const createPost: RequestHandler = catchAsync(async (req, res, next) => {
+const createPost = catchAsync(async (req, res, next) => {
   const { content, media, location } = req.body;
 
   if (!content || !media) {
