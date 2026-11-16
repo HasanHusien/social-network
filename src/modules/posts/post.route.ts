@@ -1,4 +1,5 @@
 import express from "express";
+const router = express.Router();
 import {
   createPost,
   deletePost,
@@ -7,11 +8,14 @@ import {
   updatePost,
 } from "./post.controller.js";
 import { protect } from "../../middlewares/protect.js";
-const router = express.Router();
+import { createComment, getComment } from "../comments/comment.controller.js";
 
 router.use(protect);
 router.get("/", getAllPosts);
 router.post("/new", createPost);
 router.route("/:id").get(getPost).patch(updatePost).delete(deletePost);
+
+// comment routes
+router.route("/:postId/comments").get(getComment).post(createComment);
 
 export default router;

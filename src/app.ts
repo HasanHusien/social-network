@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import userRouter from "./modules/users/user.routes.js";
 import postRouter from "./modules/posts/post.route.js";
+import commentRouter from "./modules/comments/comment.route.js";
 
 import authRouter from "./modules/authentication/auth.routes.js";
 import { notFound, errorHandler } from "./middlewares/index.js";
@@ -17,7 +18,8 @@ if (process.env.NODE_ENV === "development") {
 
 app.use("/network/authentication", authRouter);
 app.use("/network/users", userRouter);
-app.use("/network/post", postRouter);
+app.use("/network/posts", postRouter);
+app.use("/network/comments", commentRouter);
 
 app.use(notFound);
 app.use(errorHandler);
