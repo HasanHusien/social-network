@@ -14,7 +14,8 @@ export interface IUser {
   active: boolean;
 }
 
-export interface IUserMethods {
+// model && statics
+export interface IUserModel extends Model<IUser> {
   correctPassword(
     candidatePassword: string,
     userPassword: string,
@@ -22,4 +23,3 @@ export interface IUserMethods {
   changePasswordAfter(JWTTimestamp: number): boolean;
   createPasswordResetToken(): string;
 }
-export type UserModel = Model<IUser, {}, IUserMethods>;

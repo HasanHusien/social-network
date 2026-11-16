@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import type { CommentModel, IComment } from "../../types/commentTypes.js";
 
-const commentSchema = new mongoose.Schema(
+const commentSchema = new mongoose.Schema<IComment, CommentModel>(
   {
     author: {
       type: mongoose.Schema.Types.ObjectId,
@@ -63,4 +64,7 @@ commentSchema.statics.increaseRepliesCount = async function (parentComment) {
     });
   }
 };
-export const Comment = mongoose.model("Comment", commentSchema);
+export const Comment = mongoose.model<IComment, CommentModel>(
+  "Comment",
+  commentSchema,
+);

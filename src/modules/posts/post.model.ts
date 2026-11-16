@@ -1,6 +1,10 @@
+import type {
+  IPost,
+  PostModel,
+} from "./../../types/postTypes.js";
 import mongoose from "mongoose";
 
-const postSchema = new mongoose.Schema(
+const postSchema = new mongoose.Schema<IPost, PostModel>(
   {
     author: {
       type: mongoose.Schema.Types.ObjectId,
@@ -69,6 +73,6 @@ postSchema.statics.increaseCommentsCount = async function (postId) {
   await this.findByIdAndUpdate(postId, { $inc: { commentCount: 1 } });
 };
 
-const Post = mongoose.model("Post", postSchema);
+const Post = mongoose.model<IPost, PostModel>("Post", postSchema);
 
 export { Post };

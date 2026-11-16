@@ -55,7 +55,7 @@ const createComment = catchAsync(async (req, res, next) => {
   // update counters
   await Post.increaseCommentsCount(postId);
   await Comment.increaseRepliesCount(parentComment);
-  
+
   await comment.populate("author", "name photo ");
 
   res.status(HTTP_STATUS.CREATED).json({

@@ -1,11 +1,11 @@
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 
-import type { IUser, IUserMethods, UserModel } from "../../types/userTypes.js";
-import { model, Schema, Query } from "mongoose";
+import type { IUser, IUserModel } from "../../types/userTypes.js";
+import mongoose, { Query } from "mongoose";
 import validator from "validator";
 
-export const userSchema = new Schema<IUser, UserModel, IUserMethods>({
+export const userSchema = new mongoose.Schema<IUser, IUserModel>({
   name: {
     type: String,
     required: [true, "Name is required"],
@@ -121,5 +121,5 @@ userSchema.methods.createPasswordResetToken = function () {
   return resetToken;
 };
 
-const User = model<IUser, UserModel>("User", userSchema);
+const User = mongoose.model<IUser, IUserModel>("User", userSchema);
 export { User };
