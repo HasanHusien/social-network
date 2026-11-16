@@ -65,6 +65,10 @@ const postSchema = new mongoose.Schema(
 // postSchema.index({ commentsCount: -1 });
 // postSchema.index({ visibility: 1 });
 
+postSchema.statics.increaseCommentsCount = async function (postId) {
+  await this.findByIdAndUpdate(postId, { $inc: { commentCount: 1 } });
+};
+
 const Post = mongoose.model("Post", postSchema);
 
 export { Post };

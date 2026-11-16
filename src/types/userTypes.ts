@@ -8,7 +8,7 @@ export interface IUser {
   password: string;
   privacy: any;
   passwordConfirm: string | undefined;
-  passwordChangedAt: Date | number;
+  passwordChangedAt: any;
   passwordResetToken: string | undefined;
   passwordResetExpires: Date | undefined | number;
   active: boolean;

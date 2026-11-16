@@ -6,7 +6,7 @@ import { User } from "../index.js";
 import { SendEmail } from "../../integrations/emails/email.service.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 
-const register: RequestHandler = catchAsync(async (req, res, _next) => {
+const register = catchAsync(async (req, res, _next) => {
   const user = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -19,7 +19,7 @@ const register: RequestHandler = catchAsync(async (req, res, _next) => {
   sendToken(user, HTTP_STATUS.OK, res);
 });
 
-const login: RequestHandler = catchAsync(async (req, res, next) => {
+const login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return next(
@@ -31,7 +31,7 @@ const login: RequestHandler = catchAsync(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email }).select("+password");
-  if (!user || !(await user.correctPassword(user.password, password))) {
+  if (!user || !(await user.correctPassword(password, user.password))) {
     return next(
       new AppError("Incorrect password or email!", HTTP_STATUS.UNAUTHORIZED),
     );

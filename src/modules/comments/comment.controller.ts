@@ -53,14 +53,9 @@ const createComment = catchAsync(async (req, res, next) => {
   });
 
   // update counters
-  await Post.findByIdAndUpdate(postId, { $inc: { commentCount: 1 } });
-
-  if (parentComment) {
-    await Comment.findByIdAndUpdate(parentComment._id, {
-      $inc: { repliesCount: 1 },
-    });
-  }
-
+  await Post.increaseCommentsCount(postId);
+  await Comment.increaseRepliesCount(parentComment);
+  
   await comment.populate("author", "name photo ");
 
   res.status(HTTP_STATUS.CREATED).json({

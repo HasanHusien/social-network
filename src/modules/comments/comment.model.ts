@@ -56,4 +56,11 @@ const commentSchema = new mongoose.Schema(
 
 commentSchema.index({ post: -1, parentComment: -1, createdAt: -1 });
 
+commentSchema.statics.increaseRepliesCount = async function (parentComment) {
+  if (parentComment) {
+    await this.findByIdAndUpdate(parentComment._id, {
+      $inc: { repliesCount: 1 },
+    });
+  }
+};
 export const Comment = mongoose.model("Comment", commentSchema);
