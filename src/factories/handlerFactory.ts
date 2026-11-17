@@ -9,7 +9,9 @@ const deleteOne = (Model: Model<any>) =>
     const doc = await Model.findByIdAndDelete(req.params.id);
 
     if (!doc) {
-      return next(new AppError("No document found with that ID", 404));
+      return next(
+        new AppError("No document found with that ID", HTTP_STATUS.NOT_FOUND),
+      );
     }
 
     res.status(HTTP_STATUS.NO_CONTENT).json({
@@ -52,7 +54,7 @@ const createOne = <T>(Model: Model<T>) =>
 const getOne = (Model: any, popOptions?: string) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     let query = Model.findById(req.params.id);
-    
+
     if (popOptions) query = query.populate(popOptions);
     const doc = await query;
 

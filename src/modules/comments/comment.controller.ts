@@ -3,6 +3,7 @@ import { catchAsync, AppError } from "../../utils/index.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { Comment } from "./comment.model.js";
 import { Post } from "../posts/post.model.js";
+import { deleteOne, updateOne } from "../../factories/handlerFactory.js";
 
 // @route POST /posts/:postId/comments
 const createComment = catchAsync(async (req, res, next) => {
@@ -111,4 +112,7 @@ const getComments = catchAsync(async (req, res, next) => {
   });
 });
 
-export { createComment, getComments };
+const updateComment = updateOne(Comment);
+const deleteComment = deleteOne(Comment);
+
+export { createComment, getComments, updateComment, deleteComment };
