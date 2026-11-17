@@ -52,6 +52,7 @@ const createOne = <T>(Model: Model<T>) =>
 const getOne = (Model: any, popOptions?: string) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     let query = Model.findById(req.params.id);
+    
     if (popOptions) query = query.populate(popOptions);
     const doc = await query;
 

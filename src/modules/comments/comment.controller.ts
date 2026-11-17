@@ -1,11 +1,10 @@
-import { catchAsync } from "../../utils/catchAsync.js";
+import { isValidObjectId } from "mongoose";
+import { catchAsync, AppError } from "../../utils/index.js";
+import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { Comment } from "./comment.model.js";
 import { Post } from "../posts/post.model.js";
-import { HTTP_STATUS } from "../../constants/httpStatus.js";
-import { isValidObjectId } from "mongoose";
-import { AppError } from "../../utils/appError.js";
 
-//  @route POST /posts/:postId/comments
+// @route POST /posts/:postId/comments
 const createComment = catchAsync(async (req, res, next) => {
   const { postId } = req.params;
   const { content, parentCommentId } = req.body;
@@ -56,7 +55,7 @@ const createComment = catchAsync(async (req, res, next) => {
   await Post.increaseCommentsCount(postId);
   await Comment.increaseRepliesCount(parentComment);
 
-  await comment.populate("author", "name photo ");
+  await comment.populate("author", "name photo");
 
   res.status(HTTP_STATUS.CREATED).json({
     status: "success",
@@ -64,6 +63,38 @@ const createComment = catchAsync(async (req, res, next) => {
   });
 });
 
-const getComment = catchAsync(async (req, res, next) => {});
+// @route GET /posts/:postId/comments
+const getComments = catchAsync(async (req, res, next) => {
+  const postId = req.params.postId;
 
-export { createComment, getComment };
+  if (!postId) {
+    return next(new AppError("please provide postId", HTTP_STATUS.BAD_REQUEST));
+  }
+
+  const post = await Post.findById(postId);
+  if (!post) {
+    return next(
+      new AppError(
+        "Cannot find the post or postId is wrong",
+        HTTP_STATUS.NOT_FOUND,
+      ),
+    );
+  }
+
+  const comments = await Comment.find({
+    post: postId,
+    parentComment: null, // one level
+    isActive: true,
+  })
+    .populate("author", "name photo")
+    .populate("post", "content");
+
+
+  res.status(HTTP_STATUS.OK).json({
+    status: "success",
+    result: comments.length,
+    data: { comments },
+  });
+});
+
+export { createComment, getComments };
