@@ -66,6 +66,8 @@ const createComment = catchAsync(async (req, res, next) => {
 // @route GET /posts/:postId/comments
 const getComments = catchAsync(async (req, res, next) => {
   const postId = req.params.postId;
+  const page: any = parseInt(req.query.page as string) || 1;
+  const limit: any = parseInt(req.query.limit as string) || 10;
 
   if (!postId) {
     return next(new AppError("please provide postId", HTTP_STATUS.BAD_REQUEST));
@@ -81,19 +83,31 @@ const getComments = catchAsync(async (req, res, next) => {
     );
   }
 
-  const comments = await Comment.find({
+  const filter = {
     post: postId,
     parentComment: null, // one level
     isActive: true,
-  })
-    .populate("author", "name photo")
-    .populate("post", "content");
+  };
 
+  const comments = await Comment.find(filter)
+    .populate("author", "name photo")
+    .populate("post", "content")
+    .sort({ createdAt: -1 })
+    .skip((page - 1) * limit)
+    .limit(limit);
+
+  // const totalComments = await Comment.countDocuments(filter);
 
   res.status(HTTP_STATUS.OK).json({
     status: "success",
     result: comments.length,
     data: { comments },
+    // pagination: {
+    //   page: parseInt(page),
+    //   limit: parseInt(limit),
+    //   totalComments,
+    //   pages: Math.ceil(totalComments / limit),
+    // },
   });
 });
 
