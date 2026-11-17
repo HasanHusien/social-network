@@ -112,6 +112,19 @@ const getComments = catchAsync(async (req, res, next) => {
   });
 });
 
+const likeComment = catchAsync(async (req, res, next) => {
+  const comment = await Comment.findById(req.params.id);
+
+  if (!comment) {
+    return next(
+      new AppError("Comment not found, Or wrong id", HTTP_STATUS.NOT_FOUND),
+    );
+  }
+
+  
+
+});
+
 const updateComment = updateOne(Comment);
 const deleteComment = deleteOne(Comment);
 

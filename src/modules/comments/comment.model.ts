@@ -1,7 +1,17 @@
 import mongoose from "mongoose";
-import type { CommentModel, IComment } from "../../types/commentTypes.js";
+import type { Types } from "mongoose";
 
-const commentSchema = new mongoose.Schema<IComment, CommentModel>(
+import type {
+  CommentModel,
+  IComment,
+  ICommentMethods,
+} from "../../types/commentTypes.js";
+
+const commentSchema = new mongoose.Schema<
+  IComment,
+  CommentModel,
+  ICommentMethods
+>(
   {
     author: {
       type: mongoose.Schema.Types.ObjectId,
@@ -30,7 +40,6 @@ const commentSchema = new mongoose.Schema<IComment, CommentModel>(
     },
     likes: [
       {
-        _id: false,
         user: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "User",
@@ -64,6 +73,19 @@ commentSchema.statics.increaseRepliesCount = async function (parentComment) {
     });
   }
 };
+
+// can put multiple methods once
+commentSchema.method({
+  isLikedBy(this: any, userId: Types.ObjectId | string): boolean {
+    return this.likes.some(
+      (like: any) => like.user.toString() === userId.toString(),
+    );
+  },
+  isReply(this: any): boolean {
+    return this.parentComment !== null;
+  },
+});
+
 export const Comment = mongoose.model<IComment, CommentModel>(
   "Comment",
   commentSchema,
