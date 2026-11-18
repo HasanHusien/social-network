@@ -5,6 +5,7 @@ import {
   deletePost,
   getAllPosts,
   getPost,
+  likePost,
   updatePost,
 } from "./post.controller.js";
 import { protect } from "../../middlewares/protect.js";
@@ -14,6 +15,7 @@ router.use(protect);
 router.get("/", getAllPosts);
 router.post("/new", createPost);
 router.route("/:id").get(getPost).patch(updatePost).delete(deletePost);
+router.patch("/:id/likes", likePost);
 
 // comment routes
 router.route("/:postId/comments").get(getComments).post(createComment);

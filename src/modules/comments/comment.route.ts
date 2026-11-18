@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.use(protect);
 router.route("/:id").patch(updateComment).delete(deleteComment);
-router.patch("/:commentId/likes", likeComment);
+router.patch("/:id/likes", likeComment);
 
 export default router;
 

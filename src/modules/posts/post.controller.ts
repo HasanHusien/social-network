@@ -7,13 +7,15 @@ import {
   deleteOne,
   getAll,
   getOne,
+  likeOne,
   updateOne,
 } from "../../factories/handlerFactory.js";
 
 const getAllPosts = getAll(Post);
 const getPost = getOne(Post, "author");
-const deletePost = deleteOne(Post);
 const updatePost = updateOne(Post);
+const deletePost = deleteOne(Post);
+const likePost = likeOne(Post);
 
 const createPost = catchAsync(async (req, res, next) => {
   const { content, media, location } = req.body;
@@ -40,4 +42,4 @@ const createPost = catchAsync(async (req, res, next) => {
   });
 });
 
-export { createPost, getPost, getAllPosts, updatePost, deletePost };
+export { createPost, getPost, getAllPosts, updatePost, deletePost, likePost };
