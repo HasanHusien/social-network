@@ -20,6 +20,6 @@ export interface ICommentMethods {
 }
 
 // static methods && model itself
-export interface CommentModel extends Model<IComment> {
+export interface CommentModel extends Model<IComment, {}, ICommentMethods> {
   increaseRepliesCount(parentComment: any): any;
 }
