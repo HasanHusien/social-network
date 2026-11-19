@@ -62,18 +62,13 @@ const postSchema = new mongoose.Schema<IPost, PostModel>(
   },
   { timestamps: true },
 );
-
+("followers");
 // Indexes for better performance
-// postSchema.index({ author: 1, createdAt: -1 });
-// postSchema.index({ createdAt: -1 });
-// postSchema.index({ likesCount: -1 });
-// postSchema.index({ commentsCount: -1 });
-// postSchema.index({ visibility: 1 });
+postSchema.index({ author: 1, createdAt: -1 });
+postSchema.index({ createdAt: -1 });
 
 postSchema.statics.increaseCommentsCount = async function (postId) {
   await this.findByIdAndUpdate(postId, { $inc: { commentCount: 1 } });
 };
 
-const Post = mongoose.model<IPost, PostModel>("Post", postSchema);
-
-export { Post };
+export const Post = mongoose.model<IPost, PostModel>("Post", postSchema);

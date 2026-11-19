@@ -15,7 +15,6 @@ export interface IComment {
 }
 
 export interface ICommentMethods {
-  isLikedBy(userId: Types.ObjectId | string): Boolean;
   isReply(): boolean;
 }
 

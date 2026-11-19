@@ -74,14 +74,8 @@ commentSchema.statics.increaseRepliesCount = async function (parentComment) {
   }
 };
 
-
 // can put multiple methods once
 commentSchema.method({
-  isLikedBy(this: any, userId: Types.ObjectId | string): boolean {
-    return this.likes.some(
-      (like: any) => like.user.toString() === userId.toString(),
-    );
-  },
   isReply(this: any): boolean {
     return this.parentComment !== null;
   },
