@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const followSchema = new mongoose.Schema(
   {
-    follower: {
+    followers: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: [true, "Follow relationship must have a follower"],
@@ -21,4 +21,17 @@ const followSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+followSchema.statics.getFollowers = function (userId, status = "accepted") {
+  return this.find({ following: userId, status }).populate(
+    "follower",
+    "name photos",
+  );
+};
+
+followSchema.statics.getFollowing = function (userId, status = "accepted") {
+  return this.find({ followers: userId, status }).populate(
+    "follower",
+    "name photos",
+  );
+};
 export const Follow = mongoose.model("Follow", followSchema);
