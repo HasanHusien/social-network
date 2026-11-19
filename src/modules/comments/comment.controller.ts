@@ -1,15 +1,11 @@
 import { isValidObjectId } from "mongoose";
-import type { Model } from "mongoose";
 
 import { catchAsync, AppError } from "../../utils/index.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { Comment } from "./comment.model.js";
 import { Post } from "../posts/post.model.js";
-import {
-  deleteOne,
-  likeOne,
-  updateOne,
-} from "../../factories/handlerFactory.js";
+import { deleteOne, updateOne } from "../../factories/crud.js";
+import { likeOne } from "../../factories/resource.js";
 
 // @route POST /posts/:postId/comments
 const createComment = catchAsync(async (req, res, next) => {
@@ -118,9 +114,9 @@ const getComments = catchAsync(async (req, res, next) => {
   });
 });
 
+const updateComment = updateOne(Comment);
+const deleteComment = deleteOne(Comment);
 const likeComment = likeOne(Comment);
-const updateComment = updateOne(Comment)
-const deleteComment = deleteOne(Comment );
 
 export {
   createComment,

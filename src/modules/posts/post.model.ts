@@ -1,7 +1,4 @@
-import type {
-  IPost,
-  PostModel,
-} from "./../../types/postTypes.js";
+import type { IPost, PostModel } from "./../../types/postTypes.js";
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema<IPost, PostModel>(
@@ -37,8 +34,12 @@ const postSchema = new mongoose.Schema<IPost, PostModel>(
     },
     likes: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
+        createdAt: { type: Date, default: Date.now },
       },
     ],
     likesCount: {

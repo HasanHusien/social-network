@@ -3,19 +3,8 @@ import { catchAsync } from "../../utils/catchAsync.js";
 import { AppError } from "../../utils/appError.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { Post } from "./post.model.js";
-import {
-  deleteOne,
-  getAll,
-  getOne,
-  likeOne,
-  updateOne,
-} from "../../factories/handlerFactory.js";
-
-const getAllPosts = getAll(Post);
-const getPost = getOne(Post, "author");
-const updatePost = updateOne(Post);
-const deletePost = deleteOne(Post);
-const likePost = likeOne(Post);
+import { deleteOne, getAll, getOne, updateOne } from "../../factories/crud.js";
+import { likeOne } from "../../factories/resource.js";
 
 const createPost = catchAsync(async (req, res, next) => {
   const { content, media, location } = req.body;
@@ -41,5 +30,11 @@ const createPost = catchAsync(async (req, res, next) => {
     post,
   });
 });
+
+const getAllPosts = getAll(Post);
+const getPost = getOne(Post, "author");
+const updatePost = updateOne(Post);
+const deletePost = deleteOne(Post);
+const likePost = likeOne(Post);
 
 export { createPost, getPost, getAllPosts, updatePost, deletePost, likePost };

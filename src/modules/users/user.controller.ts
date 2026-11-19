@@ -2,12 +2,7 @@ import multer from "multer";
 import sharp from "sharp";
 import type { RequestHandler } from "express";
 import { User } from "../index.js";
-import {
-  deleteOne,
-  getAll,
-  getOne,
-  updateOne,
-} from "../../factories/handlerFactory.js";
+import { deleteOne, getAll, getOne, updateOne } from "../../factories/crud.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { catchAsync, filterObj, AppError } from "../../utils/index.js";
 

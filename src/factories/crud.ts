@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import type { HydratedDocument, Model } from "mongoose";
 import { HTTP_STATUS } from "../constants/httpStatus.js";
 
-import { catchAsync, AppError, APIFeatures } from "./../utils/index.js";
+import { catchAsync, AppError, APIFeatures } from "../utils/index.js";
 
 const deleteOne = (Model: any) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -70,40 +70,7 @@ const getOne = (Model: any, popOptions?: string) =>
     });
   });
 
-const likeOne = (Model: any) =>
-  catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const doc = await Model.findById(req.params.id);
 
-    if (!doc) {
-      return next(
-        new AppError("Document not found, Or wrong id", HTTP_STATUS.NOT_FOUND),
-      );
-    }
-
-    const userId = req.user._id.toString();
-    const isLiked = doc.isLikedBy(req.user._id);
-
-    if (isLiked) {
-      doc.likes = doc.likes.filter(
-        (like: any) => like.user.toString() !== userId,
-      );
-    } else {
-      // liked
-      doc.likes.push({ user: userId });
-    }
-
-    doc.likesCount = doc.likes.length;
-    await Model.save();
-
-    res.status(HTTP_STATUS.OK).json({
-      status: "success",
-      message: isLiked ? "unliked" : "liked",
-      data: {
-        likesCount: doc.likesCount,
-        isLiked: !isLiked,
-      },
-    });
-  });
 const getAll = (Model: Model<any>, popOptions?: string) =>
   catchAsync(async (req: Request, res: Response, _next: NextFunction) => {
     // To allow for nested GET reviews on tour (hack)
@@ -128,4 +95,4 @@ const getAll = (Model: Model<any>, popOptions?: string) =>
     });
   });
 
-export { getAll, getOne, deleteOne, updateOne, createOne, likeOne };
+export { getAll, getOne, deleteOne, updateOne, createOne };
