@@ -11,7 +11,7 @@ export interface IComment {
   visibility: string;
   likesCount: number;
   repliesCount: number;
-  isActive: boolean;
+  active: boolean;
 }
 
 export interface ICommentMethods {

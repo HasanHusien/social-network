@@ -17,7 +17,7 @@ const createComment = catchAsync(async (req, res, next) => {
   }
 
   const post = await Post.findById(postId);
-  if (!post || !post.isActive) {
+  if (!post || !post.active) {
     return next(new AppError("Cannot find post", HTTP_STATUS.NOT_FOUND));
   }
 
@@ -89,7 +89,7 @@ const getComments = catchAsync(async (req, res, next) => {
   const filter = {
     post: postId,
     parentComment: null, // one level
-    isActive: true,
+    active: true,
   };
 
   const comments = await Comment.find(filter)

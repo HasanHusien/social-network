@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import { AppError } from "../../utils/appError.js";
+import { HTTP_STATUS } from "../../constants/httpStatus.js";
 
 const followSchema = new mongoose.Schema(
   {
-    followers: {
+    follower: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: [true, "Follow relationship must have a follower"],
@@ -11,12 +13,6 @@ const followSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: [true, "Follow relationship must have a following user"],
-      validate: {
-        validator: function (el: any) {
-          return el !== this.followers;
-        },
-        message: "Users cannot follow themselves",
-      },
     },
     status: {
       type: String,
@@ -26,6 +22,15 @@ const followSchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+followSchema.pre("validate", function (next: any) {
+  if (this.follower && this.following && this.follower.equals(this.following)) {
+    return next(
+      new AppError("Users Cannot follow themselves", HTTP_STATUS.BAD_REQUEST),
+    );
+  }
+  next();
+});
 
 followSchema.statics.getFollowers = function (userId, status = "accepted") {
   return this.find({ following: userId, status }).populate(

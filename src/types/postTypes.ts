@@ -10,7 +10,7 @@ export interface IPost {
   visibility: string;
   likesCount: number;
   commentCount: number;
-  isActive: boolean;
+  active: boolean;
 }
 
 // static methods && model itself

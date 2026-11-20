@@ -1,4 +1,3 @@
-import type { RequestHandler } from "express";
 import { catchAsync } from "../../utils/catchAsync.js";
 import { AppError } from "../../utils/appError.js";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";

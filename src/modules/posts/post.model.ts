@@ -55,9 +55,10 @@ const postSchema = new mongoose.Schema<IPost, PostModel>(
       enum: ["public", "private", "followers"],
       default: "public",
     },
-    isActive: {
+    active: {
       type: Boolean,
       default: true,
+      select: false,
     },
   },
   { timestamps: true },

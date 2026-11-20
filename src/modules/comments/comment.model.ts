@@ -55,9 +55,10 @@ const commentSchema = new mongoose.Schema<
       type: Number,
       default: 0,
     },
-    isActive: {
+    active: {
       type: Boolean,
       default: true,
+      select: false,
     },
   },
 
