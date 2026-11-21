@@ -23,6 +23,8 @@ const followSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
+followSchema.index({ follower: 1, following: 1 }, { unique: true });
+
 followSchema.pre("validate", function (next: any) {
   if (this.follower && this.following && this.follower.equals(this.following)) {
     return next(

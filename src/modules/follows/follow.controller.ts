@@ -7,13 +7,13 @@ import { parseObjectId } from "../../utils/parseObjectId.js";
 
 const followUser = catchAsync(async (req, res, next) => {
   const sourceUserId = req.user._id;
-  const targetUserId = req.params.userId;
+  const targetUserId = parseObjectId(req.params.userId);
 
-  // if (targetUserId) {
-  //   return next(new AppError("Cannot find userId", HTTP_STATUS.BAD_REQUEST));
-  // }
+  if (!targetUserId) {
+    return next(new AppError("Invalid userId", HTTP_STATUS.BAD_REQUEST));
+  }
 
-  if (sourceUserId === targetUserId) {
+  if (sourceUserId.equals(targetUserId)) {
     return next(
       new AppError("Users Cannot follow themselves", HTTP_STATUS.BAD_REQUEST),
     );
@@ -44,6 +44,27 @@ const followUser = catchAsync(async (req, res, next) => {
   const follow = await Follow.create({
     follower: sourceUserId,
     following: targetUserId,
-    // status: targetUser.isPrivate ? "pending" : "accepted",
+    status: targetUser.privacy.isPrivateAccount ? "pending" : "accepted",
+  });
+
+  await User.findByIdAndUpdate(sourceUserId, { $inc: { followingCount: 1 } });
+  await User.findByIdAndUpdate(targetUserId, { $inc: { followersCount: 1 } });
+
+  res.status(HTTP_STATUS.OK).json({
+    status: "success",
+    message: targetUser.privacy.isPrivateAccount
+      ? "Follow request sent"
+      : "User followed successfully",
+
+    date: {
+      follow: {
+        status: follow.status,
+        following: {
+          _id: targetUser._id,
+          name: targetUser.name,
+          photo: targetUser.photo,
+        },
+      },
+    },
   });
 });

@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import crypto from "crypto";
 
 import type { IUser, IUserModel } from "../../types/userTypes.js";
-import mongoose, { Query } from "mongoose";
+import mongoose, { mongo, Query } from "mongoose";
 import validator from "validator";
 
 export const userSchema = new mongoose.Schema<IUser, IUserModel>({
@@ -16,15 +16,6 @@ export const userSchema = new mongoose.Schema<IUser, IUserModel>({
     unique: [true, "Email should be unique"],
     lowercase: true,
     validate: [validator.isEmail, "Please provide a valid email"],
-  },
-  photo: {
-    type: String,
-    default: "default.png",
-  },
-  role: {
-    type: String,
-    enum: ["user", "guid", "admin"],
-    default: "user",
   },
 
   password: {
@@ -43,6 +34,38 @@ export const userSchema = new mongoose.Schema<IUser, IUserModel>({
       message: "Passwords should be the same.",
     },
   },
+  photo: {
+    type: String,
+    default: "",
+  },
+  coverPhoto: {
+    type: String,
+    default: "",
+  },
+  bio: {
+    type: String,
+    maxlength: [500, "Bio cannot exceed 500 characters"],
+  },
+  website: {
+    type: String,
+    trim: true,
+    maxlength: [200, "Website URL cannot exceed 200 characters"],
+  },
+  dateOfBirth: {
+    type: Date,
+    validate: {
+      validator: function (value: any) {
+        const age = new Date().getFullYear() - value.getFullYear();
+        return age >= 14;
+      },
+      message: "User must be at least 14 years old",
+    },
+  },
+  gender: {
+    type: String,
+    enum: ["male", "female", "prefer-not-to-say"],
+    default: "prefer-not-to-say",
+  },
   privacy: {
     isPrivateAccount: { type: Boolean, default: false },
 
@@ -56,6 +79,32 @@ export const userSchema = new mongoose.Schema<IUser, IUserModel>({
       enum: ["everybody", "followers", "nobody"],
       default: "everybody",
     },
+  },
+  role: {
+    type: String,
+    enum: ["user", "guid", "admin"],
+    default: "user",
+  },
+
+  followers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  following: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  followersCount: {
+    type: Number,
+    default: 0,
+  },
+  followingCount: {
+    type: Number,
+    default: 0,
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
