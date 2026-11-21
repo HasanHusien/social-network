@@ -1,11 +1,11 @@
 import express from "express";
+const router = express.Router();
 import {
   deleteComment,
   likeComment,
   updateComment,
 } from "./comment.controller.js";
 import { protect } from "../../middlewares/protect.js";
-const router = express.Router();
 
 router.use(protect);
 router.route("/:id").patch(updateComment).delete(deleteComment);

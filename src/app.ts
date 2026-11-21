@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import userRouter from "./modules/users/user.routes.js";
 import postRouter from "./modules/posts/post.route.js";
 import commentRouter from "./modules/comments/comment.route.js";
+import followRouter from "./modules/follows/follow.route.js";
 
 import authRouter from "./modules/authentication/auth.routes.js";
 import { notFound, errorHandler } from "./middlewares/index.js";
@@ -20,6 +21,7 @@ app.use("/network/authentication", authRouter);
 app.use("/network/users", userRouter);
 app.use("/network/posts", postRouter);
 app.use("/network/comments", commentRouter);
+app.use("/network/follows", followRouter);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -1,10 +1,10 @@
-import { Types } from "mongoose";
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
 import { AppError, catchAsync } from "../../utils/index.js";
 import { User } from "../users/user.model.js";
 import { Follow } from "./follow.model.js";
 import { parseObjectId } from "../../utils/parseObjectId.js";
 
+// @route   POST /api/follow/:userId
 const followUser = catchAsync(async (req, res, next) => {
   const sourceUserId = req.user._id;
   const targetUserId = parseObjectId(req.params.userId);
@@ -68,3 +68,32 @@ const followUser = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+// @route   DELETE /api/follow/:userId
+const unFollowUser = catchAsync(async (req, res, next) => {
+  const userId = req.params.userId;
+
+  const follow = await Follow.findByIdAndDelete({
+    follower: req.user._id,
+    following: userId,
+  });
+
+  if (!follow) {
+    return next(
+      new AppError(
+        "You aren't following this account",
+        HTTP_STATUS.BAD_REQUEST,
+      ),
+    );
+  }
+
+  await User.findByIdAndUpdate(req.user._id, { $inc: { followingCount: -1 } });
+  await User.findByIdAndUpdate(userId, { $inc: { followersCount: -1 } });
+
+  res.status(HTTP_STATUS.NO_CONTENT).json({
+    status: "success",
+    message: "Account unfollowed successfully",
+  });
+});
+
+export { followUser, unFollowUser };
