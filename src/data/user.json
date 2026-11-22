@@ -1,0 +1,245 @@
+[
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c01",
+    "name": "Ahmed Hassan",
+    "email": "ahmed.hassan@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/men/32.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-1/1500/500",
+    "bio": "MERN stack developer from Alexandria. Building things, breaking things, fixing things.",
+    "website": "https://ahmedhassan.dev",
+    "dateOfBirth": "1999-03-14T00:00:00.000Z",
+    "gender": "male",
+    "privacy": {
+      "isPrivateAccount": false,
+      "whoCanMessage": "everybody",
+      "whoCanMention": "everybody"
+    },
+    "role": "admin",
+    "followers": [
+      "665f1a2b3c4d5e6f7a8b9c03",
+      "665f1a2b3c4d5e6f7a8b9c04",
+      "665f1a2b3c4d5e6f7a8b9c07",
+      "665f1a2b3c4d5e6f7a8b9c08"
+    ],
+    "following": [
+      "665f1a2b3c4d5e6f7a8b9c04",
+      "665f1a2b3c4d5e6f7a8b9c05",
+      "665f1a2b3c4d5e6f7a8b9c06",
+      "665f1a2b3c4d5e6f7a8b9c07",
+      "665f1a2b3c4d5e6f7a8b9c08"
+    ],
+    "followersCount": 4,
+    "followingCount": 5,
+    "active": true
+  },
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c02",
+    "name": "Sara Mostafa",
+    "email": "sara.mostafa@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/women/44.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-2/1500/500",
+    "bio": "UI/UX enthusiast and coffee addict. Designing apps people actually enjoy using.",
+    "website": "https://sara-designs.com",
+    "dateOfBirth": "2000-07-22T00:00:00.000Z",
+    "gender": "female",
+    "privacy": {
+      "isPrivateAccount": false,
+      "whoCanMessage": "everybody",
+      "whoCanMention": "followers"
+    },
+    "role": "user",
+    "followers": ["665f1a2b3c4d5e6f7a8b9c05", "665f1a2b3c4d5e6f7a8b9c08"],
+    "following": [
+      "665f1a2b3c4d5e6f7a8b9c03",
+      "665f1a2b3c4d5e6f7a8b9c05",
+      "665f1a2b3c4d5e6f7a8b9c06"
+    ],
+    "followersCount": 2,
+    "followingCount": 3,
+    "active": true
+  },
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c03",
+    "name": "Omar Khaled",
+    "email": "omar.khaled@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/men/45.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-3/1500/500",
+    "bio": "React Native dev. Football fan. Always learning something new.",
+    "website": "https://omarkhaled.io",
+    "dateOfBirth": "1998-11-05T00:00:00.000Z",
+    "gender": "male",
+    "privacy": {
+      "isPrivateAccount": false,
+      "whoCanMessage": "followers",
+      "whoCanMention": "everybody"
+    },
+    "role": "guid",
+    "followers": ["665f1a2b3c4d5e6f7a8b9c02", "665f1a2b3c4d5e6f7a8b9c05"],
+    "following": [
+      "665f1a2b3c4d5e6f7a8b9c01",
+      "665f1a2b3c4d5e6f7a8b9c04",
+      "665f1a2b3c4d5e6f7a8b9c05"
+    ],
+    "followersCount": 2,
+    "followingCount": 3,
+    "active": true
+  },
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c04",
+    "name": "Mariam Adel",
+    "email": "mariam.adel@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/women/68.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-4/1500/500",
+    "bio": "Computer science student at Alexandria University. Love hiking and photography.",
+    "dateOfBirth": "2003-01-30T00:00:00.000Z",
+    "gender": "female",
+    "privacy": {
+      "isPrivateAccount": true,
+      "whoCanMessage": "followers",
+      "whoCanMention": "followers"
+    },
+    "role": "user",
+    "followers": [
+      "665f1a2b3c4d5e6f7a8b9c01",
+      "665f1a2b3c4d5e6f7a8b9c03",
+      "665f1a2b3c4d5e6f7a8b9c05"
+    ],
+    "following": [
+      "665f1a2b3c4d5e6f7a8b9c01",
+      "665f1a2b3c4d5e6f7a8b9c06",
+      "665f1a2b3c4d5e6f7a8b9c08"
+    ],
+    "followersCount": 3,
+    "followingCount": 3,
+    "active": true
+  },
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c05",
+    "name": "Youssef Nabil",
+    "email": "youssef.nabil@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/men/76.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-5/1500/500",
+    "bio": "Backend engineer. Node.js, MongoDB and too many side projects.",
+    "website": "https://github.com/youssefnabil",
+    "dateOfBirth": "1997-09-18T00:00:00.000Z",
+    "gender": "male",
+    "privacy": {
+      "isPrivateAccount": false,
+      "whoCanMessage": "everybody",
+      "whoCanMention": "everybody"
+    },
+    "role": "user",
+    "followers": [
+      "665f1a2b3c4d5e6f7a8b9c01",
+      "665f1a2b3c4d5e6f7a8b9c02",
+      "665f1a2b3c4d5e6f7a8b9c03",
+      "665f1a2b3c4d5e6f7a8b9c06",
+      "665f1a2b3c4d5e6f7a8b9c08"
+    ],
+    "following": [
+      "665f1a2b3c4d5e6f7a8b9c02",
+      "665f1a2b3c4d5e6f7a8b9c03",
+      "665f1a2b3c4d5e6f7a8b9c04",
+      "665f1a2b3c4d5e6f7a8b9c06",
+      "665f1a2b3c4d5e6f7a8b9c07"
+    ],
+    "followersCount": 5,
+    "followingCount": 5,
+    "active": true,
+    "passwordChangedAt": "2026-10-20T09:30:00.000Z"
+  },
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c06",
+    "name": "Nour El-Din",
+    "email": "nour.eldin@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/men/12.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-6/1500/500",
+    "bio": "Travel, food and code. Not necessarily in that order.",
+    "dateOfBirth": "2001-05-09T00:00:00.000Z",
+    "gender": "male",
+    "privacy": {
+      "isPrivateAccount": false,
+      "whoCanMessage": "nobody",
+      "whoCanMention": "nobody"
+    },
+    "role": "user",
+    "followers": [
+      "665f1a2b3c4d5e6f7a8b9c01",
+      "665f1a2b3c4d5e6f7a8b9c02",
+      "665f1a2b3c4d5e6f7a8b9c04",
+      "665f1a2b3c4d5e6f7a8b9c05"
+    ],
+    "following": ["665f1a2b3c4d5e6f7a8b9c05", "665f1a2b3c4d5e6f7a8b9c08"],
+    "followersCount": 4,
+    "followingCount": 2,
+    "active": true
+  },
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c07",
+    "name": "Hana Samir",
+    "email": "hana.samir@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/women/21.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-7/1500/500",
+    "bio": "Frontend developer. Typography nerd. Cat person.",
+    "website": "https://hanasamir.dev",
+    "dateOfBirth": "2002-12-01T00:00:00.000Z",
+    "gender": "female",
+    "privacy": {
+      "isPrivateAccount": false,
+      "whoCanMessage": "everybody",
+      "whoCanMention": "everybody"
+    },
+    "role": "user",
+    "followers": ["665f1a2b3c4d5e6f7a8b9c01", "665f1a2b3c4d5e6f7a8b9c05"],
+    "following": ["665f1a2b3c4d5e6f7a8b9c01", "665f1a2b3c4d5e6f7a8b9c08"],
+    "followersCount": 2,
+    "followingCount": 2,
+    "active": true
+  },
+  {
+    "_id": "665f1a2b3c4d5e6f7a8b9c08",
+    "name": "Karim Fathy",
+    "email": "karim.fathy@example.com",
+    "password": "Test@1234",
+    "passwordConfirm": "Test@1234",
+    "photo": "https://randomuser.me/api/portraits/men/52.jpg",
+    "coverPhoto": "https://picsum.photos/seed/cover-8/1500/500",
+    "bio": "Gym, gaming and clean code.",
+    "dateOfBirth": "1996-04-27T00:00:00.000Z",
+    "gender": "male",
+    "privacy": {
+      "isPrivateAccount": false,
+      "whoCanMessage": "everybody",
+      "whoCanMention": "followers"
+    },
+    "role": "user",
+    "followers": [
+      "665f1a2b3c4d5e6f7a8b9c01",
+      "665f1a2b3c4d5e6f7a8b9c04",
+      "665f1a2b3c4d5e6f7a8b9c06",
+      "665f1a2b3c4d5e6f7a8b9c07"
+    ],
+    "following": [
+      "665f1a2b3c4d5e6f7a8b9c01",
+      "665f1a2b3c4d5e6f7a8b9c02",
+      "665f1a2b3c4d5e6f7a8b9c05"
+    ],
+    "followersCount": 4,
+    "followingCount": 3,
+    "active": true
+  }
+]

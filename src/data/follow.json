@@ -1,0 +1,234 @@
+[
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0001",
+    "follower": "665f1a2b3c4d5e6f7a8b9c01",
+    "following": "665f1a2b3c4d5e6f7a8b9c04",
+    "status": "accepted",
+    "createdAt": "2026-09-09T06:20:00Z",
+    "updatedAt": "2026-09-09T06:20:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0002",
+    "follower": "665f1a2b3c4d5e6f7a8b9c01",
+    "following": "665f1a2b3c4d5e6f7a8b9c05",
+    "status": "accepted",
+    "createdAt": "2026-10-23T03:30:00Z",
+    "updatedAt": "2026-10-23T03:30:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0003",
+    "follower": "665f1a2b3c4d5e6f7a8b9c01",
+    "following": "665f1a2b3c4d5e6f7a8b9c06",
+    "status": "accepted",
+    "createdAt": "2026-08-29T18:02:00Z",
+    "updatedAt": "2026-08-29T18:02:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0004",
+    "follower": "665f1a2b3c4d5e6f7a8b9c01",
+    "following": "665f1a2b3c4d5e6f7a8b9c07",
+    "status": "accepted",
+    "createdAt": "2026-09-15T06:19:00Z",
+    "updatedAt": "2026-09-15T06:19:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0005",
+    "follower": "665f1a2b3c4d5e6f7a8b9c01",
+    "following": "665f1a2b3c4d5e6f7a8b9c08",
+    "status": "accepted",
+    "createdAt": "2026-09-03T19:40:00Z",
+    "updatedAt": "2026-09-03T19:40:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0006",
+    "follower": "665f1a2b3c4d5e6f7a8b9c02",
+    "following": "665f1a2b3c4d5e6f7a8b9c03",
+    "status": "accepted",
+    "createdAt": "2026-08-25T19:30:00Z",
+    "updatedAt": "2026-08-25T19:30:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0007",
+    "follower": "665f1a2b3c4d5e6f7a8b9c02",
+    "following": "665f1a2b3c4d5e6f7a8b9c05",
+    "status": "accepted",
+    "createdAt": "2026-09-26T02:17:00Z",
+    "updatedAt": "2026-09-26T02:17:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0008",
+    "follower": "665f1a2b3c4d5e6f7a8b9c02",
+    "following": "665f1a2b3c4d5e6f7a8b9c06",
+    "status": "accepted",
+    "createdAt": "2026-09-01T09:41:00Z",
+    "updatedAt": "2026-09-01T09:41:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0009",
+    "follower": "665f1a2b3c4d5e6f7a8b9c03",
+    "following": "665f1a2b3c4d5e6f7a8b9c01",
+    "status": "accepted",
+    "createdAt": "2026-09-30T02:27:00Z",
+    "updatedAt": "2026-09-30T02:27:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e000a",
+    "follower": "665f1a2b3c4d5e6f7a8b9c03",
+    "following": "665f1a2b3c4d5e6f7a8b9c04",
+    "status": "accepted",
+    "createdAt": "2026-09-19T10:13:00Z",
+    "updatedAt": "2026-09-19T10:13:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e000b",
+    "follower": "665f1a2b3c4d5e6f7a8b9c03",
+    "following": "665f1a2b3c4d5e6f7a8b9c05",
+    "status": "accepted",
+    "createdAt": "2026-09-04T12:17:00Z",
+    "updatedAt": "2026-09-04T12:17:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e000c",
+    "follower": "665f1a2b3c4d5e6f7a8b9c04",
+    "following": "665f1a2b3c4d5e6f7a8b9c01",
+    "status": "accepted",
+    "createdAt": "2026-09-28T03:01:00Z",
+    "updatedAt": "2026-09-28T03:01:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e000d",
+    "follower": "665f1a2b3c4d5e6f7a8b9c04",
+    "following": "665f1a2b3c4d5e6f7a8b9c06",
+    "status": "accepted",
+    "createdAt": "2026-10-11T18:12:00Z",
+    "updatedAt": "2026-10-11T18:12:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e000e",
+    "follower": "665f1a2b3c4d5e6f7a8b9c04",
+    "following": "665f1a2b3c4d5e6f7a8b9c08",
+    "status": "accepted",
+    "createdAt": "2026-08-26T04:53:00Z",
+    "updatedAt": "2026-08-26T04:53:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e000f",
+    "follower": "665f1a2b3c4d5e6f7a8b9c05",
+    "following": "665f1a2b3c4d5e6f7a8b9c02",
+    "status": "accepted",
+    "createdAt": "2026-11-14T01:04:00Z",
+    "updatedAt": "2026-11-14T01:04:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0010",
+    "follower": "665f1a2b3c4d5e6f7a8b9c05",
+    "following": "665f1a2b3c4d5e6f7a8b9c03",
+    "status": "accepted",
+    "createdAt": "2026-10-16T05:03:00Z",
+    "updatedAt": "2026-10-16T05:03:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0011",
+    "follower": "665f1a2b3c4d5e6f7a8b9c05",
+    "following": "665f1a2b3c4d5e6f7a8b9c04",
+    "status": "accepted",
+    "createdAt": "2026-11-12T12:37:00Z",
+    "updatedAt": "2026-11-12T12:37:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0012",
+    "follower": "665f1a2b3c4d5e6f7a8b9c05",
+    "following": "665f1a2b3c4d5e6f7a8b9c06",
+    "status": "accepted",
+    "createdAt": "2026-11-05T15:40:00Z",
+    "updatedAt": "2026-11-05T15:40:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0013",
+    "follower": "665f1a2b3c4d5e6f7a8b9c05",
+    "following": "665f1a2b3c4d5e6f7a8b9c07",
+    "status": "accepted",
+    "createdAt": "2026-10-20T19:43:00Z",
+    "updatedAt": "2026-10-20T19:43:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0014",
+    "follower": "665f1a2b3c4d5e6f7a8b9c06",
+    "following": "665f1a2b3c4d5e6f7a8b9c05",
+    "status": "accepted",
+    "createdAt": "2026-10-12T11:38:00Z",
+    "updatedAt": "2026-10-12T11:38:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0015",
+    "follower": "665f1a2b3c4d5e6f7a8b9c06",
+    "following": "665f1a2b3c4d5e6f7a8b9c08",
+    "status": "accepted",
+    "createdAt": "2026-09-14T14:41:00Z",
+    "updatedAt": "2026-09-14T14:41:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0016",
+    "follower": "665f1a2b3c4d5e6f7a8b9c07",
+    "following": "665f1a2b3c4d5e6f7a8b9c01",
+    "status": "accepted",
+    "createdAt": "2026-09-10T23:36:00Z",
+    "updatedAt": "2026-09-10T23:36:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0017",
+    "follower": "665f1a2b3c4d5e6f7a8b9c07",
+    "following": "665f1a2b3c4d5e6f7a8b9c08",
+    "status": "accepted",
+    "createdAt": "2026-10-28T14:53:00Z",
+    "updatedAt": "2026-10-28T14:53:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0018",
+    "follower": "665f1a2b3c4d5e6f7a8b9c08",
+    "following": "665f1a2b3c4d5e6f7a8b9c01",
+    "status": "accepted",
+    "createdAt": "2026-11-17T00:05:00Z",
+    "updatedAt": "2026-11-17T00:05:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e0019",
+    "follower": "665f1a2b3c4d5e6f7a8b9c08",
+    "following": "665f1a2b3c4d5e6f7a8b9c02",
+    "status": "accepted",
+    "createdAt": "2026-09-01T12:17:00Z",
+    "updatedAt": "2026-09-01T12:17:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e001a",
+    "follower": "665f1a2b3c4d5e6f7a8b9c08",
+    "following": "665f1a2b3c4d5e6f7a8b9c05",
+    "status": "accepted",
+    "createdAt": "2026-09-11T08:56:00Z",
+    "updatedAt": "2026-09-11T08:56:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e001b",
+    "follower": "665f1a2b3c4d5e6f7a8b9c02",
+    "following": "665f1a2b3c4d5e6f7a8b9c04",
+    "status": "pending",
+    "createdAt": "2026-11-02T09:53:00Z",
+    "updatedAt": "2026-11-02T09:53:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e001c",
+    "follower": "665f1a2b3c4d5e6f7a8b9c06",
+    "following": "665f1a2b3c4d5e6f7a8b9c04",
+    "status": "pending",
+    "createdAt": "2026-10-12T11:57:00Z",
+    "updatedAt": "2026-10-12T11:57:00Z"
+  },
+  {
+    "_id": "665f4d5e6f7a8b9c0d1e001d",
+    "follower": "665f1a2b3c4d5e6f7a8b9c01",
+    "following": "665f1a2b3c4d5e6f7a8b9c02",
+    "status": "blocked",
+    "createdAt": "2026-09-30T03:38:00Z",
+    "updatedAt": "2026-09-30T03:38:00Z"
+  }
+]

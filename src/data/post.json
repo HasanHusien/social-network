@@ -1,0 +1,437 @@
+[
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0001",
+    "author": "665f1a2b3c4d5e6f7a8b9c07",
+    "content": "Hot take: learning TypeScript made me write fewer bugs and drink less coffee. Mostly.",
+    "media": [],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c01",
+        "createdAt": "2026-10-17T23:56:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c05",
+        "createdAt": "2026-10-17T12:01:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c07",
+        "createdAt": "2026-10-18T22:51:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c04",
+        "createdAt": "2026-10-17T17:56:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c08",
+        "createdAt": "2026-10-18T04:37:00Z"
+      }
+    ],
+    "likesCount": 5,
+    "commentCount": 8,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-10-17T08:46:00Z",
+    "updatedAt": "2026-10-17T08:46:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0002",
+    "author": "665f1a2b3c4d5e6f7a8b9c04",
+    "content": "Weekend hike was worth every step. The view from the top was unreal.",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/hike-1/1080/720"
+      },
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/hike-2/1080/720"
+      },
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/hike-3/1080/720"
+      }
+    ],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c03",
+        "createdAt": "2026-10-21T00:11:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c01",
+        "createdAt": "2026-10-20T23:28:00Z"
+      }
+    ],
+    "likesCount": 2,
+    "commentCount": 5,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-10-19T08:24:00Z",
+    "updatedAt": "2026-10-19T08:24:00Z",
+    "location": "Saint Catherine, Sinai"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0003",
+    "author": "665f1a2b3c4d5e6f7a8b9c03",
+    "content": "Reminder: commit early, commit often, and write messages your future self can understand.",
+    "media": [],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c05",
+        "createdAt": "2026-10-22T09:22:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c08",
+        "createdAt": "2026-10-23T12:15:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c01",
+        "createdAt": "2026-10-23T05:51:00Z"
+      }
+    ],
+    "likesCount": 3,
+    "commentCount": 4,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-10-22T01:14:00Z",
+    "updatedAt": "2026-10-22T01:14:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0004",
+    "author": "665f1a2b3c4d5e6f7a8b9c07",
+    "content": "Sunset at the Corniche today. Nothing beats this view after a long day of coding.",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/corniche-sunset/1080/720"
+      },
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/corniche-sea/1080/720"
+      }
+    ],
+    "likes": [],
+    "likesCount": 0,
+    "commentCount": 5,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-10-27T09:45:00Z",
+    "updatedAt": "2026-10-27T09:45:00Z",
+    "location": "Alexandria, Egypt"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0005",
+    "author": "665f1a2b3c4d5e6f7a8b9c03",
+    "content": "Coffee, headphones, and a long list of bugs. Let's go.",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/coffee-code/1080/720"
+      }
+    ],
+    "likes": [],
+    "likesCount": 0,
+    "commentCount": 6,
+    "visibility": "followers",
+    "active": true,
+    "createdAt": "2026-10-29T04:51:00Z",
+    "updatedAt": "2026-10-29T04:51:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0006",
+    "author": "665f1a2b3c4d5e6f7a8b9c01",
+    "content": "New desk setup is finally done. Productivity +100%, tidiness +5%.",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/desk-setup/1080/720"
+      },
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/desk-monitor/1080/720"
+      }
+    ],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c08",
+        "createdAt": "2026-11-01T00:55:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c01",
+        "createdAt": "2026-11-01T16:09:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c07",
+        "createdAt": "2026-11-01T13:54:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c03",
+        "createdAt": "2026-10-30T21:00:00Z"
+      }
+    ],
+    "likesCount": 4,
+    "commentCount": 6,
+    "visibility": "followers",
+    "active": true,
+    "createdAt": "2026-10-30T16:29:00Z",
+    "updatedAt": "2026-10-30T16:29:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0007",
+    "author": "665f1a2b3c4d5e6f7a8b9c06",
+    "content": "Private note to self: refactor the comments controller before adding replies.",
+    "media": [],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c07",
+        "createdAt": "2026-11-01T12:23:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c01",
+        "createdAt": "2026-11-02T21:11:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c06",
+        "createdAt": "2026-11-02T22:13:00Z"
+      }
+    ],
+    "likesCount": 3,
+    "commentCount": 0,
+    "visibility": "private",
+    "active": true,
+    "createdAt": "2026-11-01T07:01:00Z",
+    "updatedAt": "2026-11-01T07:01:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0008",
+    "author": "665f1a2b3c4d5e6f7a8b9c02",
+    "content": "Just shipped my first REST API with Express and MongoDB. JWT auth finally works end to end! 🚀",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/api-launch/1080/720"
+      }
+    ],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c01",
+        "createdAt": "2026-11-03T23:27:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c08",
+        "createdAt": "2026-11-02T11:37:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c05",
+        "createdAt": "2026-11-03T18:18:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c07",
+        "createdAt": "2026-11-02T22:19:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c03",
+        "createdAt": "2026-11-02T10:13:00Z"
+      }
+    ],
+    "likesCount": 5,
+    "commentCount": 5,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-11-02T07:35:00Z",
+    "updatedAt": "2026-11-02T07:35:00Z",
+    "location": "Alexandria, Egypt"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c0009",
+    "author": "665f1a2b3c4d5e6f7a8b9c02",
+    "content": "Spring is here and the garden looks amazing this year.",
+    "media": [
+      {
+        "type": "video",
+        "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      }
+    ],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c08",
+        "createdAt": "2026-11-02T17:01:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c03",
+        "createdAt": "2026-11-03T23:00:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c06",
+        "createdAt": "2026-11-03T15:44:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c04",
+        "createdAt": "2026-11-03T02:57:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c07",
+        "createdAt": "2026-11-04T09:11:00Z"
+      }
+    ],
+    "likesCount": 5,
+    "commentCount": 4,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-11-02T15:24:00Z",
+    "updatedAt": "2026-11-02T15:24:00Z",
+    "location": "Giza, Egypt"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c000a",
+    "author": "665f1a2b3c4d5e6f7a8b9c08",
+    "content": "Road trip to the North Coast with friends. Music loud, windows down.",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/road-trip-1/1080/720"
+      },
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/road-trip-2/1080/720"
+      },
+      {
+        "type": "video",
+        "url": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      }
+    ],
+    "likes": [],
+    "likesCount": 0,
+    "commentCount": 5,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-11-07T14:46:00Z",
+    "updatedAt": "2026-11-07T14:46:00Z",
+    "location": "North Coast, Egypt"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c000b",
+    "author": "665f1a2b3c4d5e6f7a8b9c04",
+    "content": "Homemade koshari for lunch. Yes, I made the fried onions myself 😋",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/koshari-bowl/1080/720"
+      }
+    ],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c07",
+        "createdAt": "2026-11-10T12:20:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c08",
+        "createdAt": "2026-11-10T03:18:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c03",
+        "createdAt": "2026-11-09T21:03:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c04",
+        "createdAt": "2026-11-09T16:49:00Z"
+      }
+    ],
+    "likesCount": 4,
+    "commentCount": 8,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-11-08T20:17:00Z",
+    "updatedAt": "2026-11-08T20:17:00Z",
+    "location": "Cairo, Egypt"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c000c",
+    "author": "665f1a2b3c4d5e6f7a8b9c05",
+    "content": "Quick demo of the new React Native screen I built today. Smooth animations at last.",
+    "media": [
+      {
+        "type": "video",
+        "url": "https://www.w3schools.com/html/mov_bbb.mp4"
+      }
+    ],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c02",
+        "createdAt": "2026-11-12T04:28:00Z"
+      }
+    ],
+    "likesCount": 1,
+    "commentCount": 5,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-11-10T13:11:00Z",
+    "updatedAt": "2026-11-10T13:11:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c000d",
+    "author": "665f1a2b3c4d5e6f7a8b9c01",
+    "content": "Anyone has a good resource for understanding MongoDB aggregation pipelines? $lookup is confusing me.",
+    "media": [],
+    "likes": [],
+    "likesCount": 0,
+    "commentCount": 5,
+    "visibility": "followers",
+    "active": true,
+    "createdAt": "2026-11-15T18:15:00Z",
+    "updatedAt": "2026-11-15T18:15:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c000e",
+    "author": "665f1a2b3c4d5e6f7a8b9c07",
+    "content": "Reading 'Clean Code' again. Every time I find something new I missed.",
+    "media": [],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c05",
+        "createdAt": "2026-11-18T20:10:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c02",
+        "createdAt": "2026-11-18T01:37:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c04",
+        "createdAt": "2026-11-19T06:50:00Z"
+      }
+    ],
+    "likesCount": 3,
+    "commentCount": 4,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-11-17T06:32:00Z",
+    "updatedAt": "2026-11-17T06:32:00Z"
+  },
+  {
+    "_id": "665f2b3c4d5e6f7a8b9c000f",
+    "author": "665f1a2b3c4d5e6f7a8b9c07",
+    "content": "Finished my graduation project presentation today. Nervous but proud of the team!",
+    "media": [
+      {
+        "type": "image",
+        "url": "https://picsum.photos/seed/graduation-team/1080/720"
+      }
+    ],
+    "likes": [
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c03",
+        "createdAt": "2026-11-19T22:10:00Z"
+      },
+      {
+        "user": "665f1a2b3c4d5e6f7a8b9c06",
+        "createdAt": "2026-11-20T08:25:00Z"
+      }
+    ],
+    "likesCount": 2,
+    "commentCount": 6,
+    "visibility": "public",
+    "active": true,
+    "createdAt": "2026-11-19T05:11:00Z",
+    "updatedAt": "2026-11-19T05:11:00Z",
+    "location": "Alexandria University"
+  }
+]
