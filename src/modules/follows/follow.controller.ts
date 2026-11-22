@@ -4,7 +4,7 @@ import { User } from "../users/user.model.js";
 import { Follow } from "./follow.model.js";
 import { parseObjectId } from "../../utils/parseObjectId.js";
 
-// @route   POST /api/follow/:userId
+// @route   POST /network/follow/:userId
 const followUser = catchAsync(async (req, res, next) => {
   const sourceUserId = req.user._id;
   const targetUserId = parseObjectId(req.params.userId);
@@ -69,7 +69,7 @@ const followUser = catchAsync(async (req, res, next) => {
   });
 });
 
-// @route   DELETE /api/follow/:userId
+// @route   DELETE /network/follow/:userId
 const unFollowUser = catchAsync(async (req, res, next) => {
   const userId = req.params.userId;
 
@@ -96,4 +96,31 @@ const unFollowUser = catchAsync(async (req, res, next) => {
   });
 });
 
-export { followUser, unFollowUser };
+// @route put /network/follow/:userId/accept
+const acceptFollowRequest = catchAsync(async (req, res, next) => {
+  const userId = req.params.userId;
+
+  if (!userId)
+    return next(new AppError("Invalid userId", HTTP_STATUS.BAD_REQUEST));
+
+  const follow = await Follow.findOne({
+    follower: userId,
+    following: req.user._id,
+    status: "pending",
+  });
+
+  if (!follow)
+    return next(
+      new AppError("Cannot found follow request", HTTP_STATUS.BAD_REQUEST),
+    );
+
+  follow.status = "accepted";
+  await follow.save();
+
+  res.status(HTTP_STATUS.ACCEPTED).json({
+    status: "success",
+    message: "Follow request accepted",
+  });
+});
+
+export { followUser, unFollowUser, acceptFollowRequest };
