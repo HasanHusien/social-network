@@ -86,7 +86,7 @@ export const userSchema = new mongoose.Schema<IUser, IUserModel>({
     default: "user",
   },
 
-  followers: [
+  follower: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -106,26 +106,25 @@ export const userSchema = new mongoose.Schema<IUser, IUserModel>({
     type: Number,
     default: 0,
   },
-  passwordChangedAt: Date,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-
   active: {
     type: Boolean,
     default: true,
     select: false,
   },
+  passwordChangedAt: Date,
+  passwordResetToken: String,
+  passwordResetExpires: Date,
 });
 
 // before saving encrypt password
-userSchema.pre("save", async function () {
+userSchema.pre("save", async function (this: any) {
   if (!this.isModified("password")) return;
 
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
 });
 
-userSchema.pre("save", function () {
+userSchema.pre("save", function (this: any) {
   if (!this.isModified("password") || this.isNew) return;
 
   this.passwordChangedAt = Date.now() - 1000;

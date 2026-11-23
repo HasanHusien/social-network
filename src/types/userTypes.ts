@@ -13,7 +13,7 @@ export interface IUser {
   website: string;
   dateOfBirth: Date;
   gender: string;
-  followers: string[] | string;
+  follower: string[] | string;
   following: string[] | string;
   followersCount: number;
   followingCount: number;

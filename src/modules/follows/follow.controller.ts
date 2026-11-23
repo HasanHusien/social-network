@@ -20,7 +20,8 @@ const followUser = catchAsync(async (req, res, next) => {
   }
 
   const targetUser = await User.findById(targetUserId);
-  if (!targetUser || !targetUser.active) {
+
+  if (!targetUser) {
     return next(
       new AppError(
         `Cannot find User with this ${targetUserId} Id`,
@@ -49,6 +50,8 @@ const followUser = catchAsync(async (req, res, next) => {
 
   await User.findByIdAndUpdate(sourceUserId, { $inc: { followingCount: 1 } });
   await User.findByIdAndUpdate(targetUserId, { $inc: { followersCount: 1 } });
+
+  // PUSH FOLLOWER && FOLLOWING OBJECTID HIRE.
 
   res.status(HTTP_STATUS.OK).json({
     status: "success",
