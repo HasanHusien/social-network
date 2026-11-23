@@ -48,8 +48,12 @@ const followUser = catchAsync(async (req, res, next) => {
     status: targetUser.privacy.isPrivateAccount ? "pending" : "accepted",
   });
 
-  await User.findByIdAndUpdate(sourceUserId, { $inc: { followingCount: 1 } });
-  await User.findByIdAndUpdate(targetUserId, { $inc: { followersCount: 1 } });
+  await User.findByIdAndUpdate(sourceUserId, {
+    $inc: { followingCount: 1 },
+  });
+  await User.findByIdAndUpdate(targetUserId, {
+    $inc: { followersCount: 1 },
+  });
 
   // PUSH FOLLOWER && FOLLOWING OBJECTID HIRE.
 
@@ -74,11 +78,16 @@ const followUser = catchAsync(async (req, res, next) => {
 
 // @route   DELETE /network/follow/:userId
 const unFollowUser = catchAsync(async (req, res, next) => {
-  const userId = req.params.userId;
+  const sourceUserId = req.user._id;
+  const targetUserId = parseObjectId(req.params.userId);
+
+  if (!targetUserId) {
+    return next(new AppError("Invalid userId", HTTP_STATUS.BAD_REQUEST));
+  }
 
   const follow = await Follow.findByIdAndDelete({
-    follower: req.user._id,
-    following: userId,
+    follower: sourceUserId,
+    following: targetUserId,
   });
 
   if (!follow) {
@@ -90,10 +99,10 @@ const unFollowUser = catchAsync(async (req, res, next) => {
     );
   }
 
-  await User.findByIdAndUpdate(req.user._id, { $inc: { followingCount: -1 } });
-  await User.findByIdAndUpdate(userId, { $inc: { followersCount: -1 } });
+  await User.findByIdAndUpdate(sourceUserId, { $inc: { followingCount: -1 } });
+  await User.findByIdAndUpdate(targetUserId, { $inc: { followersCount: -1 } });
 
-  res.status(HTTP_STATUS.NO_CONTENT).json({
+  res.status(HTTP_STATUS.ACCEPTED).json({
     status: "success",
     message: "Account unfollowed successfully",
   });

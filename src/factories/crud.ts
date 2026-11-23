@@ -70,7 +70,6 @@ const getOne = (Model: any, popOptions?: string) =>
     });
   });
 
-
 const getAll = (Model: Model<any>, popOptions?: string) =>
   catchAsync(async (req: Request, res: Response, _next: NextFunction) => {
     // To allow for nested GET reviews on tour (hack)

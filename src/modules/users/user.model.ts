@@ -86,18 +86,6 @@ export const userSchema = new mongoose.Schema<IUser, IUserModel>({
     default: "user",
   },
 
-  follower: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
-  following: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-    },
-  ],
   followersCount: {
     type: Number,
     default: 0,
