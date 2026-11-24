@@ -6,7 +6,7 @@ import { parseObjectId } from "../../utils/parseObjectId.js";
 
 // @route  GET /api/follow/:userId/followers
 const getFollowers = catchAsync(async (req, res, next) => {
-  const sourceUserId = req.user._id;
+  const sourceUserId = req.user._id.toString();
   const targetUserId = req.params.userId;
   const { page = 1, limit = 10 }: any = req.query;
 
@@ -14,15 +14,21 @@ const getFollowers = catchAsync(async (req, res, next) => {
     return next(new AppError("Invalid userId", HTTP_STATUS.BAD_REQUEST));
 
   const user = await User.findById(targetUserId);
-  if (!user || !user.active)
+  if (!user)
     return next(new AppError("Cannot find the user", HTTP_STATUS.BAD_REQUEST));
 
-  if (user.privacy.isPrivateAccount && targetUserId !== sourceUserId) {
-    const isFollowing = await Follow.find({
-      follower: sourceUserId,
-      following: targetUserId,
+  const isPrivate = user.privacy.isPrivateAccount;
+
+  // BUGGGGGGG
+  if (!isPrivate) {
+    const isFollowing = await Follow.exists({
+      follower: sourceUserId.toString(),
+      following: user._id.toString(),
       status: "accepted",
     });
+
+    console.log(user._id.toString());
+    console.log(isFollowing);
 
     if (!isFollowing)
       return next(new AppError("Account is private", HTTP_STATUS.BAD_REQUEST));
@@ -45,12 +51,12 @@ const getFollowers = catchAsync(async (req, res, next) => {
     status: "success",
     data: {
       followers,
-      pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
-        pages: Math.ceil(total / limit),
-        total,
-      },
+      // pagination: {
+      //   page: parseInt(page),
+      //   limit: parseInt(limit),
+      //   pages: Math.ceil(total / limit),
+      //   total,
+      // },
     },
   });
 });
