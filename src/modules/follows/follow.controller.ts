@@ -6,8 +6,10 @@ import { parseObjectId } from "../../utils/parseObjectId.js";
 
 // @route  GET /api/follow/:userId/followers
 const getFollowers = catchAsync(async (req, res, next) => {
-  const sourceUserId = req.user._id.toString();
+  const sourceUserId = req.user._id;
   const targetUserId = req.params.userId;
+
+  // USE apiFeatures  util instead
   const { page = 1, limit = 10 }: any = req.query;
 
   if (!targetUserId)
@@ -19,16 +21,12 @@ const getFollowers = catchAsync(async (req, res, next) => {
 
   const isPrivate = user.privacy.isPrivateAccount;
 
-  // BUGGGGGGG
-  if (!isPrivate) {
+  if (isPrivate && (!req.user || sourceUserId !== targetUserId)) {
     const isFollowing = await Follow.exists({
-      follower: sourceUserId.toString(),
-      following: user._id.toString(),
+      follower: sourceUserId,
+      following: user._id,
       status: "accepted",
     });
-
-    console.log(user._id.toString());
-    console.log(isFollowing);
 
     if (!isFollowing)
       return next(new AppError("Account is private", HTTP_STATUS.BAD_REQUEST));
@@ -36,8 +34,8 @@ const getFollowers = catchAsync(async (req, res, next) => {
 
   const followers = await Follow.find({
     following: targetUserId,
-    status: "accepted",
   })
+
     .populate("follower", "name photo")
     .skip((page - 1) * limit)
     .limit(limit);
@@ -51,12 +49,12 @@ const getFollowers = catchAsync(async (req, res, next) => {
     status: "success",
     data: {
       followers,
-      // pagination: {
-      //   page: parseInt(page),
-      //   limit: parseInt(limit),
-      //   pages: Math.ceil(total / limit),
-      //   total,
-      // },
+      pagination: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        pages: Math.ceil(total / limit),
+        total,
+      },
     },
   });
 });
@@ -142,7 +140,7 @@ const unFollowUser = catchAsync(async (req, res, next) => {
     return next(new AppError("Invalid userId", HTTP_STATUS.BAD_REQUEST));
   }
 
-  const follow = await Follow.findByIdAndDelete({
+  const follow = await Follow.findOneAndDelete({
     follower: sourceUserId,
     following: targetUserId,
   });
