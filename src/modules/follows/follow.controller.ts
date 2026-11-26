@@ -3,52 +3,13 @@ import { APIFeatures, AppError, catchAsync } from "../../utils/index.js";
 import { User } from "../users/user.model.js";
 import { Follow } from "./follow.model.js";
 import { parseObjectId } from "../../utils/parseObjectId.js";
+import { getFollowList } from "../../factories/resource.js";
 
-// @route  GET /api/follow/:userId/followers
-const getFollowers = catchAsync(async (req, res, next) => {
-  const sourceUserId = req.user._id;
-  const targetUserId = req.params.userId;
-  const isOwner = sourceUserId.equals(targetUserId);
+// @route  GET /api/follow/:userId/followers | following
+const getFollowers = getFollowList("followers");
+const getFollowing = getFollowList("following");
 
-  if (!targetUserId)
-    return next(new AppError("Invalid userId", HTTP_STATUS.BAD_REQUEST));
-
-  const user = await User.findById(targetUserId);
-  if (!user)
-    return next(new AppError("Cannot find the user", HTTP_STATUS.BAD_REQUEST));
-
-  if (user.privacy.isPrivateAccount && !isOwner) {
-    const isFollowing = await Follow.exists({
-      follower: sourceUserId,
-      following: user._id,
-      status: "accepted",
-    });
-
-    if (!isFollowing)
-      return next(new AppError("Account is private", HTTP_STATUS.BAD_REQUEST));
-  }
-
-  const features = new APIFeatures(
-    Follow.find({ following: targetUserId, status: "accepted" }),
-    req.query,
-  )
-    .filter()
-    .sort()
-    .sort()
-    .limitFields()
-    .paginate();
-
-  const followers = await features.query.populate("follower", "name photo");
-
-  res.status(HTTP_STATUS.OK).json({
-    status: "success",
-    data: {
-      followers,
-    },
-  });
-});
-
-// @route   POST /network/follow/:userId
+// @route POST /network/follow/:userId
 const followUser = catchAsync(async (req, res, next) => {
   const sourceUserId = req.user._id;
   const targetUserId = parseObjectId(req.params.userId);
@@ -207,6 +168,7 @@ const rejectFollowRequest = catchAsync(async (req, res, next) => {
 
 export {
   getFollowers,
+  getFollowing,
   followUser,
   unFollowUser,
   acceptFollowRequest,
