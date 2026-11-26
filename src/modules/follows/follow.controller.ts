@@ -1,5 +1,5 @@
 import { HTTP_STATUS } from "../../constants/httpStatus.js";
-import { AppError, catchAsync } from "../../utils/index.js";
+import { APIFeatures, AppError, catchAsync } from "../../utils/index.js";
 import { User } from "../users/user.model.js";
 import { Follow } from "./follow.model.js";
 import { parseObjectId } from "../../utils/parseObjectId.js";
@@ -8,9 +8,7 @@ import { parseObjectId } from "../../utils/parseObjectId.js";
 const getFollowers = catchAsync(async (req, res, next) => {
   const sourceUserId = req.user._id;
   const targetUserId = req.params.userId;
-
-  // USE apiFeatures  util instead
-  const { page = 1, limit = 10 }: any = req.query;
+  const isOwner = sourceUserId.equals(targetUserId);
 
   if (!targetUserId)
     return next(new AppError("Invalid userId", HTTP_STATUS.BAD_REQUEST));
@@ -19,9 +17,7 @@ const getFollowers = catchAsync(async (req, res, next) => {
   if (!user)
     return next(new AppError("Cannot find the user", HTTP_STATUS.BAD_REQUEST));
 
-  const isPrivate = user.privacy.isPrivateAccount;
-
-  if (isPrivate && (!req.user || sourceUserId !== targetUserId)) {
+  if (user.privacy.isPrivateAccount && !isOwner) {
     const isFollowing = await Follow.exists({
       follower: sourceUserId,
       following: user._id,
@@ -32,29 +28,22 @@ const getFollowers = catchAsync(async (req, res, next) => {
       return next(new AppError("Account is private", HTTP_STATUS.BAD_REQUEST));
   }
 
-  const followers = await Follow.find({
-    following: targetUserId,
-  })
+  const features = new APIFeatures(
+    Follow.find({ following: targetUserId, status: "accepted" }),
+    req.query,
+  )
+    .filter()
+    .sort()
+    .sort()
+    .limitFields()
+    .paginate();
 
-    .populate("follower", "name photo")
-    .skip((page - 1) * limit)
-    .limit(limit);
-
-  const total = await Follow.countDocuments({
-    following: targetUserId,
-    status: "accepted",
-  });
+  const followers = await features.query.populate("follower", "name photo");
 
   res.status(HTTP_STATUS.OK).json({
     status: "success",
     data: {
       followers,
-      pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
-        pages: Math.ceil(total / limit),
-        total,
-      },
     },
   });
 });
