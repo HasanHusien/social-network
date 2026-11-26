@@ -1,11 +1,13 @@
 import express from "express";
 import {
-  acceptFollowRequest,
   followUser,
   getFollowers,
   getFollowing,
-  rejectFollowRequest,
+  getFollowRequests,
+  acceptFollowRequests,
+  rejectFollowRequests,
   unFollowUser,
+  getFollowStats,
 } from "./follow.controller.js";
 import { protect } from "../../middlewares/protect.js";
 const router = express.Router();
@@ -15,7 +17,10 @@ router.get("/:userId/followers", getFollowers);
 router.get("/:userId/following", getFollowing);
 
 router.route("/:userId").post(followUser).delete(unFollowUser);
-router.put("/:userId/accept", acceptFollowRequest);
-router.put("/:userId/reject", rejectFollowRequest);
+router.put("/:userId/accept", acceptFollowRequests);
+router.put("/:userId/reject", rejectFollowRequests);
+
+router.get("/:userId/status", getFollowStats);
+router.get("requests", getFollowRequests);
 
 export default router;

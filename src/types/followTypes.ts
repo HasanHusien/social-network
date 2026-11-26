@@ -1,4 +1,4 @@
-import type { Model, Types, HydratedDocument } from "mongoose";
+import type {  Types } from "mongoose";
 
 type FollowStatus = "pending" | "accepted" | "blocked";
 
@@ -8,24 +8,3 @@ interface IFollow {
   status: FollowStatus;
 }
 
-interface FollowModel extends Model<IFollow> {
-  getFollowers(
-    userId: string | Types.ObjectId,
-    status?: FollowStatus,
-    page?: number,
-    limit?: number,
-  ): Promise<HydratedDocument<IFollow>[]>;
-  getFollowing(
-    userId: string | Types.ObjectId,
-    status?: FollowStatus,
-    page?: number,
-    limit?: number,
-  ): Promise<HydratedDocument<IFollow>[]>;
-  getFollowStatus(
-    followerId: string | Types.ObjectId,
-    followingId: string | Types.ObjectId,
-  ): Promise<HydratedDocument<IFollow> | null>;
-  getFollowStats(
-    userId: string | Types.ObjectId,
-  ): Promise<{ followersCount: number; followingCount: number }>;
-}

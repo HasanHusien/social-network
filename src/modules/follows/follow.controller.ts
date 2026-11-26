@@ -114,7 +114,7 @@ const unFollowUser = catchAsync(async (req, res, next) => {
 });
 
 // @route put /network/follow/:userId/accept
-const acceptFollowRequest = catchAsync(async (req, res, next) => {
+const acceptFollowRequests = catchAsync(async (req, res, next) => {
   const sourceUserId = req.user._id;
   const targetUserId = req.params.userId;
 
@@ -142,7 +142,7 @@ const acceptFollowRequest = catchAsync(async (req, res, next) => {
 });
 
 // @route   PUT /api/follow/:userId/reject
-const rejectFollowRequest = catchAsync(async (req, res, next) => {
+const rejectFollowRequests = catchAsync(async (req, res, next) => {
   const sourceUserId = req.user._id;
   const targetUserId = req.params.userId;
 
@@ -165,12 +165,56 @@ const rejectFollowRequest = catchAsync(async (req, res, next) => {
     message: "Follow request rejected",
   });
 });
+// @route GET /network/follow/requests
+const getFollowRequests = catchAsync(async (req, res, next) => {
+  const features = new APIFeatures(
+    Follow.find({
+      following: req.user._id,
+      status: "pending",
+    }),
+    req.query,
+  )
+    .sort()
+    .limitFields();
+
+  const requests = await features.query.populate("follower", "name photo");
+
+  res.status(HTTP_STATUS.OK).json({
+    status: "success",
+    data: {
+      requests,
+    },
+  });
+});
+// @route GET network/follow/userId/status
+const getFollowStats = catchAsync(async (req, res, next) => {
+  const userId = req.params.userId;
+
+  if (!userId) return next(new AppError("Invalid Id", HTTP_STATUS.BAD_REQUEST));
+
+  const follow = await Follow.findOne({
+    follower: req.user._id,
+    following: userId,
+  });
+  const isFollowing = !!follow && follow.status === "accepted";
+  const hasPendingRequest = !!follow && follow.status === "pending";
+
+  res.status(HTTP_STATUS.OK).json({
+    status: "success",
+    data: {
+      isFollowing,
+      hasPendingRequest,
+    },
+  });
+});
 
 export {
   getFollowers,
   getFollowing,
   followUser,
   unFollowUser,
-  acceptFollowRequest,
-  rejectFollowRequest,
+  acceptFollowRequests,
+  rejectFollowRequests,
+  getFollowRequests,
+  getFollowStats,
 };

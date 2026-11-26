@@ -14,12 +14,6 @@ const likeOne = (Model: any) =>
       );
     }
 
-    // isLikedBy(this: any, userId: Types.ObjectId | string): boolean {
-    //   return this.likes.some(
-    //     (like: any) => like.user.toString() === userId.toString(),
-    //   );
-    // },
-
     const userId = req.user._id.toString();
     const isLiked = doc.likes.some(
       (like: any) => like.user.toString() === userId,
@@ -47,7 +41,7 @@ const likeOne = (Model: any) =>
     });
   });
 
-// @route  GET /api/follow/:userId/followers | following   
+// @route  GET /api/follow/:userId/followers | following
 const getFollowList = (type: any) =>
   catchAsync(async (req, res, next) => {
     const { userId } = req.params;
@@ -92,6 +86,7 @@ const getFollowList = (type: any) =>
 
     res.status(HTTP_STATUS.OK).json({
       status: "success",
+      result: list.length,
       data: { [type]: list },
     });
   });
